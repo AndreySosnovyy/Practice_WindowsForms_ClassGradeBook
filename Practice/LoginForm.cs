@@ -17,6 +17,7 @@ namespace Practice
         {
             InitializeComponent();
 
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.buttonExit.FlatAppearance.BorderSize = 0;
             this.ActiveControl = null;
             this.loginField.Text = " Логин";
@@ -114,11 +115,13 @@ namespace Practice
 
             if(reader.Read())
             {
-                MessageBox.Show("teacher");
-                reader.Close();
+                //MessageBox.Show("teacher");
+                
                 database.closeConnection();
-                // переход на домашнюю страницу преподавателя
-                // надо как-то запомнить id того, кто залогинился
+                this.Hide();
+                AdsForm adsForm = new AdsForm();
+                adsForm.Show();
+                reader.Close();
             }
             reader.Close();
 
@@ -130,11 +133,13 @@ namespace Practice
             MySqlDataReader reader1 = commandStudent.ExecuteReader();
             if (reader1.Read())
             {
-                MessageBox.Show("student");
-                reader.Close();
+                //MessageBox.Show("student");
+                
                 database.closeConnection();
-                // переход на домашнюю страницу ученика
-                // надо как-то запомнить id того, кто залогинился
+                this.Hide();
+                AdsForm adsForm = new AdsForm();
+                adsForm.Show();
+                reader.Close();
             }
         }
 

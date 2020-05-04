@@ -16,3 +16,8 @@ C:\projects\Practice\Practice\bin\Debug\Renci.SshNet.dll
 C:\projects\Practice\Practice\bin\Debug\MySql.Data.xml
 C:\projects\Practice\Practice\obj\Debug\Practice.csproj.CopyComplete
 C:\projects\Practice\Practice\obj\Debug\Practice.registrationForm.resources
+C:\projects\Practice\Practice\obj\Debug\Practice.AdsForm.resources
+C:\projects\Practice\Practice\obj\Debug\Practice.TimetableForm.resources
+C:\projects\Practice\Practice\obj\Debug\Practice.BookForm.resources
+C:\projects\Practice\Practice\obj\Debug\Practice.EditForm.resources
+C:\projects\Practice\Practice\obj\Debug\Practice.MarkForm.resources

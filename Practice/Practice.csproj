@@ -65,12 +65,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookForm.Designer.cs">
+      <DependentUpon>BookForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database.cs" />
+    <Compile Include="EditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm.Designer.cs">
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MarkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarkForm.Designer.cs">
+      <DependentUpon>MarkForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,8 +98,29 @@
     <Compile Include="registrationForm.Designer.cs">
       <DependentUpon>registrationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdsForm.Designer.cs">
+      <DependentUpon>AdsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TimetableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TimetableForm.Designer.cs">
+      <DependentUpon>TimetableForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BookForm.resx">
+      <DependentUpon>BookForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm.resx">
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarkForm.resx">
+      <DependentUpon>MarkForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -95,6 +134,12 @@
     </Compile>
     <EmbeddedResource Include="registrationForm.resx">
       <DependentUpon>registrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdsForm.resx">
+      <DependentUpon>AdsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimetableForm.resx">
+      <DependentUpon>TimetableForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

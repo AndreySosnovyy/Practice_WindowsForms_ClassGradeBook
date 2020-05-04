@@ -18,6 +18,7 @@ namespace Practice
         {
             InitializeComponent();
 
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.buttonExit.FlatAppearance.BorderSize = 0;
             this.ActiveControl = null;
             this.loginField.Text = " Логин";
@@ -197,7 +198,6 @@ namespace Practice
                     this.regStudentButton.Visible = false;
                     this.regTeacherButton.Visible = true;
                     GlobalRole = "" + reader.GetValue(0);
-
                     // создание учетной записи учителя (тип(роль) = 1 или 2)
                 }
                 else if ("" + reader.GetValue(0) == "0")
@@ -208,7 +208,7 @@ namespace Practice
                     this.label9.Visible = true;
                     this.regStudentButton.Visible = true;
                     this.regTeacherButton.Visible = false;
-
+                    GlobalRole = "0";
                     // создание учетной записи ученика
                 }
                 reader.Close();
@@ -250,38 +250,33 @@ namespace Practice
         private void button1_Click(object sender, EventArgs e)
         {
             Database database = new Database();
-            //MySqlCommand command = new MySqlCommand
-            //        ("SELECT `type` FROM `tokens` WHERE `token` = @t", database.getConnection());
-            //command.Parameters.AddWithValue("@t", this.tokenField.Text);
             database.openConnection();
-            //MySqlDataReader reader = command.ExecuteReader();
-            //if (reader.Read())
-            //{
-                MySqlCommand commandAddTeacher = new MySqlCommand
+            MySqlCommand commandAddTeacher = new MySqlCommand
                 ("INSERT INTO `teachers` (`login`, `password`, `token`, `firstName`, `secondName`, `thirdName`, `subject`, `phoneNumber`, `role`)" +
                 " VALUES (@login, @pass, @token, @name, @sName, @tName, @subject, @phone, @role);", database.getConnection());
-                commandAddTeacher.Parameters.AddWithValue("@login", this.loginField.Text);
-                commandAddTeacher.Parameters.AddWithValue("@pass", this.passwordField.Text);
-                commandAddTeacher.Parameters.AddWithValue("@token", this.tokenField.Text);
-                commandAddTeacher.Parameters.AddWithValue("@name", this.nameField.Text);
-                commandAddTeacher.Parameters.AddWithValue("@sName", this.secondNameField.Text);
-                commandAddTeacher.Parameters.AddWithValue("@tName", this.thirdNameField.Text);
-                commandAddTeacher.Parameters.AddWithValue("@subject", this.subjectField.Text + this.subjectComboBox.Text);
-                commandAddTeacher.Parameters.AddWithValue("@phone", this.phoneField.Text);
-                commandAddTeacher.Parameters.AddWithValue("@role", GlobalRole);
-                //commandAddTeacher.Parameters.AddWithValue("@role", "");
-                database.openConnection();
+            commandAddTeacher.Parameters.AddWithValue("@login", this.loginField.Text);
+            commandAddTeacher.Parameters.AddWithValue("@pass", this.passwordField.Text);
+            commandAddTeacher.Parameters.AddWithValue("@token", this.tokenField.Text);
+            commandAddTeacher.Parameters.AddWithValue("@name", this.nameField.Text);
+            commandAddTeacher.Parameters.AddWithValue("@sName", this.secondNameField.Text);
+            commandAddTeacher.Parameters.AddWithValue("@tName", this.thirdNameField.Text);
+            commandAddTeacher.Parameters.AddWithValue("@subject", this.subjectField.Text + this.subjectComboBox.Text);
+            commandAddTeacher.Parameters.AddWithValue("@phone", this.phoneField.Text);
+            commandAddTeacher.Parameters.AddWithValue("@role", GlobalRole);
+            database.openConnection();
 
-                if (commandAddTeacher.ExecuteNonQuery() == 1)
-                {
-                    MessageBox.Show("Вы успешно зарегистрировались", "Регистрация");
-                    // добавить переход на домашнюю страницу учителя
-                }
-                else
-                {
-                    MessageBox.Show("Не удалось зарегистрироваться", "Регистрация");
-                }
-                database.closeConnection();
+            if (commandAddTeacher.ExecuteNonQuery() == 1)
+            {
+                MessageBox.Show("Вы успешно зарегистрировались", "Регистрация");
+                this.Close();
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Не удалось зарегистрироваться", "Регистрация");
+            }
+            database.closeConnection();
             //}
         }
 
@@ -289,21 +284,25 @@ namespace Practice
         {
             Database database = new Database();
             MySqlCommand commandAddStudent = new MySqlCommand
-                ("INSERT INTO `student` (`login`, `password`, `token`, `firstName`, `secondName`, `thirdName`, `class`, `phoneNumber`)" +
-                " VALUES (@login, @pass, @token, @name, @sName, @tName, @class, @phone);", database.getConnection());
+                ("INSERT INTO `student` (`login`, `password`, `token`, `role`, `firstName`, `secondName`, `thirdName`, `class`, `phoneNumber`)" +
+                " VALUES (@login, @pass, @token, @role, @name, @sName, @tName, @class, @phone);", database.getConnection());
             commandAddStudent.Parameters.AddWithValue("@login", this.loginField.Text);
             commandAddStudent.Parameters.AddWithValue("@pass", this.passwordField.Text);
             commandAddStudent.Parameters.AddWithValue("@token", this.tokenField.Text);
+            commandAddStudent.Parameters.AddWithValue("@role", GlobalRole);
             commandAddStudent.Parameters.AddWithValue("@name", this.nameField.Text);
             commandAddStudent.Parameters.AddWithValue("@sName", this.secondNameField.Text);
             commandAddStudent.Parameters.AddWithValue("@tName", this.thirdNameField.Text);
             commandAddStudent.Parameters.AddWithValue("@class", this.classField.Text);
             commandAddStudent.Parameters.AddWithValue("@phone", this.phoneField.Text);
             database.openConnection();
+
             if (commandAddStudent.ExecuteNonQuery() == 1)
             {
                 MessageBox.Show("Вы успешно зарегистрировались", "Регистрация");
-                // добавить переход на домашнюю страницу ученика
+                this.Close();
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
             }
             else
             {
