@@ -198,7 +198,12 @@ namespace Practice
                     this.regStudentButton.Visible = false;
                     this.regTeacherButton.Visible = true;
                     GlobalRole = "" + reader.GetValue(0);
-                    // создание учетной записи учителя (тип(роль) = 1 или 2)
+                    reader.Close();
+
+                    MySqlCommand commandDel = new MySqlCommand
+                        ("DELETE FROM `tokens` WHERE `token` = @t", database.getConnection());
+                    commandDel.Parameters.AddWithValue("@t", enteredToken);
+                    commandDel.ExecuteNonQuery();
                 }
                 else if ("" + reader.GetValue(0) == "0")
                 {
@@ -209,7 +214,11 @@ namespace Practice
                     this.regStudentButton.Visible = true;
                     this.regTeacherButton.Visible = false;
                     GlobalRole = "0";
-                    // создание учетной записи ученика
+
+                    MySqlCommand commandDel = new MySqlCommand
+                        ("DELETE FROM `tokens` WHERE `token` = @t", database.getConnection());
+                    commandDel.Parameters.AddWithValue("@t", enteredToken);
+                    commandDel.ExecuteNonQuery();
                 }
                 reader.Close();
                 database.closeConnection();

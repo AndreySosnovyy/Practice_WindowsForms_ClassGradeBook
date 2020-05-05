@@ -96,6 +96,8 @@ namespace Practice
             }
         }
 
+        bool flag = false;
+
         private void enterButton_Click(object sender, EventArgs e)
         {
             string enteredLogin = this.loginField.Text;
@@ -113,17 +115,17 @@ namespace Practice
             database.openConnection();
             MySqlDataReader reader = commandTeacher.ExecuteReader();
 
-            if(reader.Read())
+            if (reader.Read())
             {
                 //MessageBox.Show("teacher");
-                
-                database.closeConnection();
                 this.Hide();
-                AdsForm adsForm = new AdsForm();
+                AdsForm adsForm = new AdsForm(reader.GetValue(0).ToString(), reader.GetValue(9).ToString());
                 adsForm.Show();
-                reader.Close();
+                database.closeConnection();
+                flag = true;
             }
             reader.Close();
+
 
             MySqlCommand commandStudent = new MySqlCommand
                 ("SELECT * FROM `student` WHERE `login` = @eLs AND `password` = @ePs", database.getConnection());
@@ -134,12 +136,17 @@ namespace Practice
             if (reader1.Read())
             {
                 //MessageBox.Show("student");
-                
-                database.closeConnection();
                 this.Hide();
-                AdsForm adsForm = new AdsForm();
+                AdsForm adsForm = new AdsForm(reader1.GetValue(0).ToString(), reader1.GetValue(4).ToString());
                 adsForm.Show();
-                reader.Close();
+                database.closeConnection();
+                flag = true;
+            }
+            reader1.Close();
+
+            if (!flag)
+            {
+                MessageBox.Show("Неверный логин или пароль", "Ошибка");
             }
         }
 

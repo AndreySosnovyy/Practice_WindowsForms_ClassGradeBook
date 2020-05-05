@@ -12,14 +12,27 @@ namespace Practice
 {
     public partial class BookForm : Form
     {
-        public BookForm()
+        String id, role;
+
+        public BookForm(String id, String role)
         {
             InitializeComponent();
+            this.id = id;
+            this.role = role;
 
             this.exitButton.ForeColor = Color.FromArgb(164, 164, 164);
             this.StartPosition = FormStartPosition.CenterScreen;
 
-
+            switch (role)
+            {
+                case "0":
+                    this.panel7.Hide();
+                    this.markPanel.Hide();
+                    break;
+                case "1":
+                    this.panel7.Hide();
+                    break;
+            }
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -73,84 +86,84 @@ namespace Practice
         private void adsPanel_Click(object sender, EventArgs e)
         {
             this.Close();
-            AdsForm adsForm = new AdsForm();
+            AdsForm adsForm = new AdsForm(id, role);
             adsForm.Show();
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
             this.Close();
-            AdsForm adsForm = new AdsForm();
+            AdsForm adsForm = new AdsForm(id, role);
             adsForm.Show();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
-            AdsForm adsForm = new AdsForm();
+            AdsForm adsForm = new AdsForm(id, role);
             adsForm.Show();
         }
 
         private void timetablePanel_Click(object sender, EventArgs e)
         {
             this.Close();
-            TimetableForm timetableForm = new TimetableForm();
+            TimetableForm timetableForm = new TimetableForm(id, role);
             timetableForm.Show();
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
             this.Close();
-            TimetableForm timetableForm = new TimetableForm();
+            TimetableForm timetableForm = new TimetableForm(id, role);
             timetableForm.Show();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             this.Close();
-            TimetableForm timetableForm = new TimetableForm();
+            TimetableForm timetableForm = new TimetableForm(id, role);
             timetableForm.Show();
         }
 
         private void markPanel_Click(object sender, EventArgs e)
         {
             this.Close();
-            MarkForm markForm = new MarkForm();
+            MarkForm markForm = new MarkForm(id, role);
             markForm.Show();
         }
 
         private void label5_Click(object sender, EventArgs e)
         {
             this.Close();
-            MarkForm markForm = new MarkForm();
+            MarkForm markForm = new MarkForm(id, role);
             markForm.Show();
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
             this.Close();
-            MarkForm markForm = new MarkForm();
+            MarkForm markForm = new MarkForm(id, role);
             markForm.Show();
         }
 
         private void panel7_Click(object sender, EventArgs e)
         {
             this.Close();
-            EditForm editForm = new EditForm();
+            EditForm editForm = new EditForm(id, role);
             editForm.Show();
         }
 
         private void editPanel_Click(object sender, EventArgs e)
         {
             this.Close();
-            EditForm editForm = new EditForm();
+            EditForm editForm = new EditForm(id, role);
             editForm.Show();
         }
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
             this.Close();
-            EditForm editForm = new EditForm();
+            EditForm editForm = new EditForm(id, role);
             editForm.Show();
         }
     }
