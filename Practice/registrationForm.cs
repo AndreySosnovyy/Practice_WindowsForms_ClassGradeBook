@@ -185,11 +185,13 @@ namespace Practice
                 database.openConnection();
                 MySqlDataReader reader = command.ExecuteReader();
 
+                bool flag = false;
+
                 if (!reader.Read())
                 {
                     MessageBox.Show("Введенного Вами токена не существует!", "Ошибка");
                 }
-                else if ("" + reader.GetValue(0) == "1" || "" + reader.GetValue(0) == "2")
+                else if (reader.GetValue(0).ToString() == "1" || reader.GetValue(0).ToString() == "2")
                 {
                     this.dataPanel.Visible = true;
                     this.classField.Visible = false;
@@ -197,15 +199,10 @@ namespace Practice
                     this.groupBox.Visible = true;
                     this.regStudentButton.Visible = false;
                     this.regTeacherButton.Visible = true;
-                    GlobalRole = "" + reader.GetValue(0);
-                    reader.Close();
-
-                    MySqlCommand commandDel = new MySqlCommand
-                        ("DELETE FROM `tokens` WHERE `token` = @t", database.getConnection());
-                    commandDel.Parameters.AddWithValue("@t", enteredToken);
-                    commandDel.ExecuteNonQuery();
+                    GlobalRole = reader.GetValue(0).ToString();
+                    flag = true;
                 }
-                else if ("" + reader.GetValue(0) == "0")
+                else if (reader.GetValue(0).ToString() == "0")
                 {
                     this.dataPanel.Visible = true;
                     this.groupBox.Visible = false;
@@ -214,14 +211,20 @@ namespace Practice
                     this.regStudentButton.Visible = true;
                     this.regTeacherButton.Visible = false;
                     GlobalRole = "0";
-
-                    MySqlCommand commandDel = new MySqlCommand
-                        ("DELETE FROM `tokens` WHERE `token` = @t", database.getConnection());
-                    commandDel.Parameters.AddWithValue("@t", enteredToken);
-                    commandDel.ExecuteNonQuery();
+                    flag = true;
                 }
                 reader.Close();
                 database.closeConnection();
+
+                if (flag)
+                {
+                    MySqlCommand commandDel = new MySqlCommand
+                        ("DELETE FROM `tokens` WHERE `token` = @t", database.getConnection());
+                    commandDel.Parameters.AddWithValue("@t", enteredToken);
+                    database.openConnection();
+                    commandDel.ExecuteNonQuery();
+                    database.closeConnection();
+                }
             }
         }
 

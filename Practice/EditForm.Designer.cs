@@ -254,54 +254,59 @@
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Bahnschrift SemiLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.button2.Font = new System.Drawing.Font("Bahnschrift SemiLight", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.Location = new System.Drawing.Point(430, 167);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(198, 80);
+            this.button2.Size = new System.Drawing.Size(642, 80);
             this.button2.TabIndex = 12;
             this.button2.Text = "Редактировать расписание";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
-            this.button4.Font = new System.Drawing.Font("Bahnschrift SemiLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.button4.Font = new System.Drawing.Font("Bahnschrift SemiLight", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button4.Location = new System.Drawing.Point(430, 72);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(198, 80);
+            this.button4.Size = new System.Drawing.Size(642, 80);
             this.button4.TabIndex = 14;
             this.button4.Text = "Редактировать объявление";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Bahnschrift SemiLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.button1.Font = new System.Drawing.Font("Bahnschrift SemiLight", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(430, 268);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(198, 80);
+            this.button1.Size = new System.Drawing.Size(642, 80);
             this.button1.TabIndex = 15;
             this.button1.Text = "Редактировать данные пользователей";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // button3
             // 
-            this.button3.Font = new System.Drawing.Font("Bahnschrift SemiLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.button3.Font = new System.Drawing.Font("Bahnschrift SemiLight", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.Location = new System.Drawing.Point(430, 370);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(198, 80);
+            this.button3.Size = new System.Drawing.Size(642, 80);
             this.button3.TabIndex = 16;
             this.button3.Text = "Редактировать оценки";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
-            this.button5.Font = new System.Drawing.Font("Bahnschrift SemiLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.button5.Font = new System.Drawing.Font("Bahnschrift SemiLight", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.Location = new System.Drawing.Point(430, 474);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(198, 80);
+            this.button5.Size = new System.Drawing.Size(642, 80);
             this.button5.TabIndex = 17;
             this.button5.Text = "Создать токен";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // pictureBox6
