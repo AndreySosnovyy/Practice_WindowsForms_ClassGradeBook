@@ -16,7 +16,8 @@ namespace Practice
         String id, role;
         int columns = 0;
         int rows = 0;
-
+        int flag = 0;
+       
         public BookForm(String id, String role)
         {
             InitializeComponent();
@@ -250,52 +251,132 @@ namespace Practice
 
         private void showButton_Click(object sender, EventArgs e)
         {
-            switch (this.monthComboBox.Text)
+            if (this.classComboBox.Text == "")
             {
-                case "Январь":
-                case "Март":
-                case "Май":
-                case "Июль":
-                case "Август":
-                case "Октябрь":
-                case "Декабрь":
-                    columns = 31 + 1;
-                    break;
-                case "Апрель":
-                case "Июнь":
-                case "Сентябрь":
-                case "Ноябрь":
-                    columns = 30 + 1;
-                    break;
-
-                case "Февраль":
-                    columns = 28 + 1;
-                    break;
+                MessageBox.Show("Вы не выбрали класс", "Ошибка");
             }
-
-            Database database = new Database();
-            MySqlCommand command = new MySqlCommand
-                ("SELECT `id`, COUNT(*) FROM `student` WHERE `class` = @class", database.getConnection());
-            command.Parameters.AddWithValue("@class", this.classComboBox.Text);
-            database.openConnection();
-            MySqlDataReader reader = command.ExecuteReader();
-            if (reader.Read())
+            else
             {
-                rows = 1 + Int32.Parse(reader.GetValue(1).ToString());
+                flag++;
+                if (flag == 1)
+                {
+                    showButton.Text = "Сбросить";
+                }
+                if (flag > 1)
+                {
+                    this.Close();
+                    BookForm bookForm = new BookForm(id, role);
+                    bookForm.Show();
+                }
+
+                table.Hide();
+
+                switch (this.monthComboBox.Text)
+                {
+                    case "Январь":
+                    case "Март":
+                    case "Май":
+                    case "Июль":
+                    case "Август":
+                    case "Октябрь":
+                    case "Декабрь":
+                        columns = 31 + 1;
+                        break;
+                    case "Апрель":
+                    case "Июнь":
+                    case "Сентябрь":
+                    case "Ноябрь":
+                        columns = 30 + 1;
+                        break;
+
+                    case "Февраль":
+                        columns = 28 + 1;
+                        break;
+                }
+
+                Database database = new Database();
+                MySqlCommand command = new MySqlCommand
+                    ("SELECT `id`, COUNT(*) FROM `student` WHERE `class` = @class", database.getConnection());
+                command.Parameters.AddWithValue("@class", this.classComboBox.Text);
+                database.openConnection();
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    rows = 1 + Int32.Parse(reader.GetValue(1).ToString());
+                }
+                reader.Close();
+                database.closeConnection();
+
+                table.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+
+                table.ColumnCount = columns;
+                table.RowCount = rows;
+
+                MySqlCommand commandNames = new MySqlCommand
+                    ("SELECT `secondName`, `firstName`, `thirdName` FROM `student` WHERE `class` = @class ORDER BY secondName", database.getConnection());
+                commandNames.Parameters.AddWithValue("@class", this.classComboBox.Text);
+                database.openConnection();
+                MySqlDataReader reader1 = commandNames.ExecuteReader();
+
+                String[] names = new String[rows - 1];
+                int index = 0;
+
+                while (reader1.Read())
+                {
+                    names[index] = reader1.GetValue(0).ToString() + " " + reader1.GetValue(1).ToString() + " " + reader1.GetValue(2).ToString();
+                    index++;
+                }
+
+                reader1.Close();
+                database.closeConnection();
+
+                ////////////////////////
+                // сделать матрицу оценок для класса
+                ////////////////////////
+
+                MySqlCommand commandMarks = new MySqlCommand
+                   ("SELECT `name`, `mark`, `date` FROM `marks` WHERE `class` = @class AND `subject` = @subject ORDER BY name", database.getConnection());
+                commandMarks.Parameters.AddWithValue("@class", this.classComboBox.Text);
+                database.openConnection();
+                MySqlDataReader reader2 = commandNames.ExecuteReader();
+
+                TableLayoutRowStyleCollection styles = table.RowStyles;
+                foreach (RowStyle style in styles)
+                {
+                    style.SizeType = SizeType.AutoSize;
+                }
+
+                TableLayoutColumnStyleCollection styles1 = table.ColumnStyles;
+                foreach (ColumnStyle style in styles1)
+                {
+                    style.SizeType = SizeType.AutoSize;
+                }
+
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < columns; j++)
+                    {
+                        Label label = new Label();
+                        label.Font = new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular);
+                        if (i == 0 && j > 0)
+                        {
+                            label.Text = j.ToString();
+                            label.Size = new System.Drawing.Size(100, 20);
+                        }
+
+                        if (i > 0 && j == 0)
+                        {
+                            label.Text = names[i - 1];
+                            label.Size = new System.Drawing.Size(300, 20);
+                        }
+
+                        //label.Text = marks[i][j];
+                        table.Controls.Add(label);
+                    }
+                }
+
+                table.Visible = true;
             }
-            reader.Close();
-            database.closeConnection();
-
-            table.ColumnCount = columns;
-            table.RowCount = rows;
-
-            MessageBox.Show(columns + " " + rows);
-
-            // заполнение ячеек лейблами
-
-            // заполнение дат и ФИО
-
-            // заполнение каждой ячейки
         }
 
         private void pictureBox6_Click(object sender, EventArgs e)

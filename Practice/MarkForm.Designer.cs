@@ -50,6 +50,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonExit = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.classComboBox = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.valueField = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.studentComboBox = new System.Windows.Forms.ComboBox();
+            this.setMarkButton = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -310,12 +319,108 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(522, 170);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 29);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Класс";
+            // 
+            // classComboBox
+            // 
+            this.classComboBox.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.classComboBox.FormattingEnabled = true;
+            this.classComboBox.Location = new System.Drawing.Point(606, 167);
+            this.classComboBox.Name = "classComboBox";
+            this.classComboBox.Size = new System.Drawing.Size(95, 36);
+            this.classComboBox.TabIndex = 12;
+            this.classComboBox.SelectedIndexChanged += new System.EventHandler(this.classComboBox_SelectedIndexChanged);
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.CalendarFont = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateTimePicker.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dateTimePicker.Location = new System.Drawing.Point(606, 341);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(315, 35);
+            this.dateTimePicker.TabIndex = 14;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(522, 341);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(67, 29);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Дата";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(478, 434);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(122, 29);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Значение";
+            // 
+            // valueField
+            // 
+            this.valueField.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.valueField.Location = new System.Drawing.Point(606, 431);
+            this.valueField.Name = "valueField";
+            this.valueField.Size = new System.Drawing.Size(210, 35);
+            this.valueField.TabIndex = 17;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(505, 256);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(95, 29);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Ученик";
+            // 
+            // studentComboBox
+            // 
+            this.studentComboBox.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.studentComboBox.FormattingEnabled = true;
+            this.studentComboBox.Location = new System.Drawing.Point(606, 251);
+            this.studentComboBox.Name = "studentComboBox";
+            this.studentComboBox.Size = new System.Drawing.Size(450, 36);
+            this.studentComboBox.TabIndex = 18;
+            // 
+            // setMarkButton
+            // 
+            this.setMarkButton.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.setMarkButton.Location = new System.Drawing.Point(867, 519);
+            this.setMarkButton.Name = "setMarkButton";
+            this.setMarkButton.Size = new System.Drawing.Size(175, 50);
+            this.setMarkButton.TabIndex = 20;
+            this.setMarkButton.Text = "Выставить";
+            this.setMarkButton.UseVisualStyleBackColor = true;
+            this.setMarkButton.Click += new System.EventHandler(this.setMarkButton_Click);
+            // 
             // MarkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(1123, 635);
+            this.Controls.Add(this.setMarkButton);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.studentComboBox);
+            this.Controls.Add(this.valueField);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.dateTimePicker);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.classComboBox);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -342,6 +447,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -368,5 +474,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox classComboBox;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox valueField;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox studentComboBox;
+        private System.Windows.Forms.Button setMarkButton;
     }
 }

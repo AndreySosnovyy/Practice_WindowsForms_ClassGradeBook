@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -33,6 +35,11 @@ namespace Practice
                     this.panel7.Hide();
                     break;
             }
+
+            for (int i = 0; i < 11; i++)
+            {
+                classComboBox.Items.Add("" + (i + 1));
+            }            
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -158,6 +165,115 @@ namespace Practice
             this.Close();
             EditForm editForm = new EditForm(id, role);
             editForm.Show();
+        }
+
+        private void classComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int count = 0;
+
+            this.studentComboBox.Items.Clear();
+            this.studentComboBox.Text = "";
+
+            Database database = new Database();
+            MySqlCommand commandCount = new MySqlCommand
+                ("SELECT `id`, COUNT(*) FROM `student` WHERE `class` = @class", database.getConnection());
+            commandCount.Parameters.AddWithValue("@class", this.classComboBox.Text);
+            database.openConnection();
+            MySqlDataReader readerC = commandCount.ExecuteReader();
+            if (readerC.Read())
+            {
+                count = Int32.Parse(readerC.GetValue(1).ToString());
+            }
+            readerC.Close();
+            database.closeConnection();
+
+            MySqlCommand commandNames = new MySqlCommand
+                ("SELECT `secondName`, `firstName`, `thirdName` FROM `student` WHERE `class` = @class ORDER BY secondName", database.getConnection());
+            commandNames.Parameters.AddWithValue("@class", this.classComboBox.Text);
+            database.openConnection();
+            MySqlDataReader reader1 = commandNames.ExecuteReader();
+
+            String[] names = new String[count];
+            int index = 0;
+
+            while (reader1.Read())
+            {
+                names[index] = reader1.GetValue(0).ToString() + " " + reader1.GetValue(1).ToString() + " " + reader1.GetValue(2).ToString();
+                index++;
+            }
+
+            reader1.Close();
+            database.closeConnection();
+
+            for (int i = 0; i < count; i++)
+            {
+                studentComboBox.Items.Add(names[i]);
+            }
+        }
+
+        private void setMarkButton_Click(object sender, EventArgs e)
+        {
+            String teachersName = ""; 
+            String subject = "";
+            String date = dateTimePicker.Value.ToString();
+            date = "" + date[6] + date[7] + date[8] + date[9] + "-" + date[3] + date[4] + "-" + date[0] + date[1];
+
+            Database database = new Database();
+            MySqlCommand command = new MySqlCommand
+                ("SELECT `subject` FROM `teachers` WHERE id = @id", database.getConnection());
+            command.Parameters.AddWithValue("@id", id);
+            database.openConnection();
+            MySqlDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+                subject = reader.GetValue(0).ToString();
+            }
+            reader.Close();
+            database.closeConnection();
+
+            MySqlCommand commandGetName = new MySqlCommand
+                ("SELECT `firstName`, `secondName`, `thirdName` FROM `teachers` WHERE id = @id", database.getConnection());
+            commandGetName.Parameters.AddWithValue("@id", id);
+            database.openConnection();
+            MySqlDataReader reader2 = commandGetName.ExecuteReader();
+            if (reader2.Read())
+            {
+                teachersName = reader2.GetValue(1).ToString() + " " + reader2.GetValue(0).ToString() + " " + reader2.GetValue(2).ToString();
+            }
+            database.closeConnection();
+            reader2.Close();
+
+            if (this.classComboBox.Text == "")
+            {
+                MessageBox.Show("Вы не выбрали класс!", "Ошибка");
+            }
+            else if (this.studentComboBox.Text == "")
+            {
+                MessageBox.Show("Вы не выбрали ученика!", "Ошибка");
+            }
+            else if (valueField.Text == "")
+            {
+                MessageBox.Show("Вы не поставили значение!\n" +
+                    "Отсутствовал/болел/число от 1 до 5/любое другое.", "Ошибка");
+            }
+            else
+            {
+                MySqlCommand commandAdd = new MySqlCommand
+                ("INSERT INTO `marks` (`name`, `class`, `mark`, `date`, `subject`, `teachersName`)" +
+                " VALUES(@name, @class, @mark, @date, @subject, @teachersName);", database.getConnection());
+                commandAdd.Parameters.AddWithValue("@name", this.studentComboBox.Text);
+                commandAdd.Parameters.AddWithValue("@class", this.classComboBox.Text);
+                commandAdd.Parameters.AddWithValue("@mark", this.valueField.Text);
+                commandAdd.Parameters.AddWithValue("@date", date);
+                commandAdd.Parameters.AddWithValue("@subject", subject);
+                commandAdd.Parameters.AddWithValue("@teachersName", teachersName);
+                database.openConnection();
+                commandAdd.ExecuteNonQuery();
+                database.closeConnection();
+                reader.Close();
+                MessageBox.Show("Оценка выставылена", "Уведомление");
+                valueField.Text = "";
+            }
         }
 
         private void pictureBox6_Click(object sender, EventArgs e)
