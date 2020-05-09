@@ -36,7 +36,7 @@ namespace Practice
                 String date = dateTimePicker.Value.ToString();
                 date = "" + date[6] + date[7] + date[8] + date[9] + "-" + date[3] + date[4] + "-" + date[0] + date[1];
 
-                DatabaseSingleton database = DatabaseSingleton.GetInstance();
+                Database database = new Database();
                 MySqlCommand commandEdit = new MySqlCommand
                 ("UPDATE `marks` SET `mark` = @mark WHERE `subject` = @subject AND `class` = @class AND " +
                 "`name` = @name AND `date` = @date", database.getConnection());
@@ -104,7 +104,7 @@ namespace Practice
             this.studentComboBox.Items.Clear();
             this.studentComboBox.Text = "";
 
-            DatabaseSingleton database = DatabaseSingleton.GetInstance();
+            Database database = new Database();
             MySqlCommand commandCount = new MySqlCommand
                 ("SELECT `id`, COUNT(*) FROM `student` WHERE `class` = @class", database.getConnection());
             commandCount.Parameters.AddWithValue("@class", this.classComboBox.Text);

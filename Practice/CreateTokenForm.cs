@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace Practice
     public partial class CreateTokenForm : Form
     {
         String id, role;
+        int type = 9;
+        String name = "";
 
         public CreateTokenForm(String id, String role)
         {
@@ -65,16 +68,29 @@ namespace Practice
                 "нажатием на кнопку 'Копировать токен')", "Информация о токенах");
         }
 
+        private String generator()
+        {
+            String symbols = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz0123456789";
+            Random rnd = new Random();
+            int value;
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < 9; i++)
+            {
+                if (i == 4)
+                {
+                    sb.Append("-");
+                    continue;
+                }
+                value = rnd.Next(0, symbols.Length);
+                sb.Append(symbols[value]);
+            }
+            return sb.ToString();
+        }
+
         private void generateButton_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            DatabaseSingleton database = DatabaseSingleton.GetInstance();
-=======
-            int type = 9;
-            String name = "";
-
             Database database = new Database();
->>>>>>> parent of a45424e... CLOSE
             MySqlCommand commandGetName = new MySqlCommand
                 ("SELECT `firstName`, `secondName`, `thirdName` FROM `teachers` WHERE id = @id", database.getConnection());
             commandGetName.Parameters.AddWithValue("@id", id);
@@ -106,23 +122,7 @@ namespace Practice
 
             if (type != 9)
             {
-                String symbols = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz0123456789";
-                Random rnd = new Random();
-                int value;
-                StringBuilder sb = new StringBuilder();
-
-                for (int i = 0; i < 9; i++)
-                {
-                    if (i == 4)
-                    {
-                        sb.Append("-");
-                        continue;
-                    }
-                    value = rnd.Next(0, symbols.Length);
-                    sb.Append(symbols[value]);
-                }
-
-                tokenField.Text = sb.ToString();
+                tokenField.Text = generator();
 
                 MySqlCommand command = new MySqlCommand
                 ("INSERT INTO `tokens` (`token`, `issuedBy`, `type`) VALUES" +
@@ -147,7 +147,6 @@ namespace Practice
             }
         }
 
-<<<<<<< HEAD
         private void tokenInFileButton_Click(object sender, EventArgs e)
         {
             if (!(radioButton1.Checked || radioButton2.Checked || radioButton3.Checked))
@@ -179,7 +178,7 @@ namespace Practice
                     BinaryWriter bw = new BinaryWriter(File.Create(path));
                     String token = generator();
 
-                    DatabaseSingleton database = DatabaseSingleton.GetInstance();
+                    Database database = new Database();
                     MySqlCommand commandGetName = new MySqlCommand
                         ("SELECT `firstName`, `secondName`, `thirdName` FROM `teachers` WHERE id = @id", database.getConnection());
                     commandGetName.Parameters.AddWithValue("@id", id);
@@ -219,8 +218,6 @@ namespace Practice
         }
 
 
-=======
->>>>>>> parent of a45424e... CLOSE
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             this.ActiveControl = null;

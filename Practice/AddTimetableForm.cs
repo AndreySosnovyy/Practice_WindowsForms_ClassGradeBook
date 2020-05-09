@@ -99,7 +99,7 @@ namespace Practice
                                   saturday6.Text;
 
 
-                DatabaseSingleton database = DatabaseSingleton.GetInstance();
+                Database database = new Database();
                 MySqlCommand command = new MySqlCommand
                     ("INSERT INTO `timetable` (`monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `class`)" +
                     " VALUES (@monday, @tuesday, @wednesday, @thursday, @friday, @saturday, @class);", database.getConnection());

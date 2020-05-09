@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +22,11 @@ namespace Practice
             this.id = id;
             this.role = role;
 
+            this.pictureHided.Hide();
+
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            DatabaseSingleton database = DatabaseSingleton.GetInstance();
+            Database database = new Database();
             MySqlCommand command = new MySqlCommand
                 ("SELECT `text` FROM `ads` WHERE `id` = 1", database.getConnection());
             database.openConnection();
@@ -63,13 +66,14 @@ namespace Practice
 
         private void label2_Click(object sender, EventArgs e)
         {
-            DatabaseSingleton database = DatabaseSingleton.GetInstance();
+            Database database = new Database();
             MySqlCommand command = new MySqlCommand
                 ("UPDATE `ads` SET `text` = @newText", database.getConnection());
             command.Parameters.AddWithValue("@newText", newTextField.Text);
             database.openConnection();
             command.ExecuteNonQuery();
             database.closeConnection();
+            this.Close();
         }
 
         private void label2_MouseEnter(object sender, EventArgs e)
@@ -82,7 +86,6 @@ namespace Practice
             this.label2.BackColor = Color.FromArgb(182, 182, 182);
         }
 
-<<<<<<< HEAD
         private byte[] ImageToByteArray(System.Drawing.Image imageIn)
         {
             using (MemoryStream ms = new MemoryStream())
@@ -103,7 +106,7 @@ namespace Practice
                 pictureHided.Image.Save(ms, pictureHided.Image.RawFormat);
                 byte[] img = ms.ToArray();
 
-                DatabaseSingleton database = DatabaseSingleton.GetInstance();
+                Database database = new Database();
                 MySqlCommand command = new MySqlCommand
                     ("INSERT INTO `images` (image) VALUES (@img)", database.getConnection());
                 command.Parameters.Add("@img", MySqlDbType.Blob);
@@ -120,7 +123,7 @@ namespace Practice
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DatabaseSingleton database = DatabaseSingleton.GetInstance();
+            Database database = new Database();
             MySqlCommand command = new MySqlCommand
                 ("DELETE FROM `images` WHERE `id` > 0", database.getConnection());
             database.openConnection();
@@ -132,8 +135,6 @@ namespace Practice
             this.Close();
         }
 
-=======
->>>>>>> parent of a45424e... CLOSE
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             this.ActiveControl = null;

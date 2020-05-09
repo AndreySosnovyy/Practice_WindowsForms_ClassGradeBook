@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace Practice
         int columns = 0;
         int rows = 0;
         int flag = 0;
+        bool sortType = false; 
        
         public BookForm(String id, String role)
         {
@@ -34,17 +36,10 @@ namespace Practice
                     break;
                 case "1":
                     this.panel7.Hide();
-                    //this.subjectComboBox.Hide();
-                    //this.label8.Hide();
-                    break;
-                case "2":
-                    //this.subjectComboBox.Hide();
-                    //this.label8.Hide();
                     break;
             }
 
             this.exitButton.ForeColor = Color.FromArgb(164, 164, 164);
-            this.StartPosition = FormStartPosition.CenterScreen;
 
             for (int i = 0; i < 11; i++)
             {
@@ -93,7 +88,7 @@ namespace Practice
 
             if (role == "0")
             {
-                DatabaseSingleton database = DatabaseSingleton.GetInstance();
+                Database database = new Database();
                 MySqlCommand command = new MySqlCommand
                     ("SELECT `class` FROM `student` WHERE id = @id", database.getConnection());
                 command.Parameters.AddWithValue("@id", id);
@@ -109,7 +104,7 @@ namespace Practice
 
             if (role == "1" || role == "2")
             {
-                DatabaseSingleton database = DatabaseSingleton.GetInstance();
+                Database database = new Database();
                 MySqlCommand command = new MySqlCommand
                     ("SELECT `subject` FROM `teachers` WHERE id = @id", database.getConnection());
                 command.Parameters.AddWithValue("@id", id);
@@ -126,6 +121,8 @@ namespace Practice
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
+            Singleton singleton = Singleton.GetInstance();
+            singleton.DeleteTable("example");
             Application.Exit();
         }
 
@@ -167,86 +164,206 @@ namespace Practice
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
+            int temp = -1;
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                if (Application.OpenForms[i].Name != "LoginForm")
+                {
+                    Application.OpenForms[i].Close();
+                }
+                else
+                {
+                    temp = i;
+                }
+            }
+
+            if (temp != -1)
+            {
+                Application.OpenForms[temp].Show();
+            }
         }
 
         private void adsPanel_Click(object sender, EventArgs e)
         {
-            this.Close();
-            AdsForm adsForm = new AdsForm(id, role);
+            Form adsForm = Application.OpenForms[0];
+            if (Application.OpenForms["AdsForm"] != null)
+            {
+                adsForm = Application.OpenForms["AdsForm"];
+            }
+            else
+            {
+                adsForm = new AdsForm(id, role);
+            }
+            adsForm.Left = this.Left;
+            adsForm.Top = this.Top;
             adsForm.Show();
+            this.Hide();
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-            this.Close();
-            AdsForm adsForm = new AdsForm(id, role);
+            Form adsForm = Application.OpenForms[0];
+            if (Application.OpenForms["AdsForm"] != null)
+            {
+                adsForm = Application.OpenForms["AdsForm"];
+            }
+            else
+            {
+                adsForm = new AdsForm(id, role);
+            }
+            adsForm.Left = this.Left;
+            adsForm.Top = this.Top;
             adsForm.Show();
+            this.Hide();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            this.Close();
-            AdsForm adsForm = new AdsForm(id, role);
+            Form adsForm = Application.OpenForms[0];
+            if (Application.OpenForms["AdsForm"] != null)
+            {
+                adsForm = Application.OpenForms["AdsForm"];
+            }
+            else
+            {
+                adsForm = new AdsForm(id, role);
+            }
+            adsForm.Left = this.Left;
+            adsForm.Top = this.Top;
             adsForm.Show();
+            this.Hide();
         }
 
         private void timetablePanel_Click(object sender, EventArgs e)
         {
-            this.Close();
-            TimetableForm timetableForm = new TimetableForm(id, role);
+            Form timetableForm = Application.OpenForms[0];
+            if (Application.OpenForms["TimetableForm"] != null)
+            {
+                timetableForm = Application.OpenForms["TimetableForm"];
+            }
+            else
+            {
+                timetableForm = new TimetableForm(id, role);
+            }
+            timetableForm.Left = this.Left;
+            timetableForm.Top = this.Top;
             timetableForm.Show();
+            this.Hide();
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-            this.Close();
-            TimetableForm timetableForm = new TimetableForm(id, role);
+            Form timetableForm = Application.OpenForms[0];
+            if (Application.OpenForms["TimetableForm"] != null)
+            {
+                timetableForm = Application.OpenForms["TimetableForm"];
+            }
+            else
+            {
+                timetableForm = new TimetableForm(id, role);
+            }
+            timetableForm.Left = this.Left;
+            timetableForm.Top = this.Top;
             timetableForm.Show();
+            this.Hide();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            this.Close();
-            TimetableForm timetableForm = new TimetableForm(id, role);
+            Form timetableForm = Application.OpenForms[0];
+            if (Application.OpenForms["TimetableForm"] != null)
+            {
+                timetableForm = Application.OpenForms["TimetableForm"];
+            }
+            else
+            {
+                timetableForm = new TimetableForm(id, role);
+            }
+            timetableForm.Left = this.Left;
+            timetableForm.Top = this.Top;
             timetableForm.Show();
+            this.Hide();
         }
 
         private void markPanel_Click(object sender, EventArgs e)
         {
-            this.Close();
-            MarkForm markForm = new MarkForm(id, role);
+            Form markForm = Application.OpenForms[0];
+            if (Application.OpenForms["MarkForm"] != null)
+            {
+                markForm = Application.OpenForms["MarkForm"];
+            }
+            else
+            {
+                markForm = new MarkForm(id, role);
+            }
+            markForm.Left = this.Left;
+            markForm.Top = this.Top;
             markForm.Show();
+            this.Hide();
         }
 
         private void label5_Click(object sender, EventArgs e)
         {
-            this.Close();
-            MarkForm markForm = new MarkForm(id, role);
+            Form markForm = Application.OpenForms[0];
+            if (Application.OpenForms["MarkForm"] != null)
+            {
+                markForm = Application.OpenForms["MarkForm"];
+            }
+            else
+            {
+                markForm = new MarkForm(id, role);
+            }
+            markForm.Left = this.Left;
+            markForm.Top = this.Top;
             markForm.Show();
+            this.Hide();
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-            this.Close();
-            MarkForm markForm = new MarkForm(id, role);
+            Form markForm = Application.OpenForms[0];
+            if (Application.OpenForms["MarkForm"] != null)
+            {
+                markForm = Application.OpenForms["MarkForm"];
+            }
+            else
+            {
+                markForm = new MarkForm(id, role);
+            }
+            markForm.Left = this.Left;
+            markForm.Top = this.Top;
             markForm.Show();
+            this.Hide();
         }
 
         private void panel7_Click(object sender, EventArgs e)
         {
-            this.Close();
-            EditForm editForm = new EditForm(id, role);
+            Form editForm = Application.OpenForms[0];
+            if (Application.OpenForms["EditForm"] != null)
+            {
+                editForm = Application.OpenForms["EditForm"];
+            }
+            else
+            {
+                editForm = new EditForm(id, role);
+            }
             editForm.Show();
+            this.Hide();
         }
 
         private void editPanel_Click(object sender, EventArgs e)
         {
-            this.Close();
-            EditForm editForm = new EditForm(id, role);
+            Form editForm = Application.OpenForms[0];
+            if (Application.OpenForms["EditForm"] != null)
+            {
+                editForm = Application.OpenForms["EditForm"];
+            }
+            else
+            {
+                editForm = new EditForm(id, role);
+            }
             editForm.Show();
+            this.Hide();
         }
 
         private void showButton_Click(object sender, EventArgs e)
@@ -255,21 +372,30 @@ namespace Practice
             {
                 MessageBox.Show("Вы не выбрали класс", "Ошибка");
             }
+            else if (this.subjectComboBox.Text == "")
+            {
+                MessageBox.Show("Вы не выбрали предмет", "Ошибка");
+            }
             else
             {
-                flag++;
-                if (flag == 1)
+                String strNames = "SELECT `secondName`, `firstName`, `thirdName` FROM `student` WHERE" +
+                    " `class` = @class ORDER BY secondName";
+                String strMarks = "SELECT `name`, DAYOFMONTH(`date`), `mark` FROM `marks` WHERE " +
+                    "`class` = @class AND `subject` = @subject AND MONTH(`date`) = @month " +
+                    "ORDER BY name";
+                if (sortType)
                 {
-                    showButton.Text = "Сбросить";
-                }
-                if (flag > 1)
-                {
-                    this.Close();
-                    BookForm bookForm = new BookForm(id, role);
-                    bookForm.Show();
+                    strNames = strNames + " DESC";
+                    strMarks = strMarks + " DESC";
                 }
 
                 table.Hide();
+                table.SuspendLayout();
+
+                while (table.Controls.Count > 0)
+                {
+                    table.Controls[0].Dispose();
+                }
 
                 switch (this.monthComboBox.Text)
                 {
@@ -294,7 +420,7 @@ namespace Practice
                         break;
                 }
 
-                DatabaseSingleton database = DatabaseSingleton.GetInstance();
+                Database database = new Database();
                 MySqlCommand command = new MySqlCommand
                     ("SELECT `id`, COUNT(*) FROM `student` WHERE `class` = @class", database.getConnection());
                 command.Parameters.AddWithValue("@class", this.classComboBox.Text);
@@ -312,8 +438,7 @@ namespace Practice
                 table.ColumnCount = columns;
                 table.RowCount = rows;
 
-                MySqlCommand commandNames = new MySqlCommand
-                    ("SELECT `secondName`, `firstName`, `thirdName` FROM `student` WHERE `class` = @class ORDER BY secondName", database.getConnection());
+                MySqlCommand commandNames = new MySqlCommand(strNames, database.getConnection());
                 commandNames.Parameters.AddWithValue("@class", this.classComboBox.Text);
                 database.openConnection();
                 MySqlDataReader reader1 = commandNames.ExecuteReader();
@@ -330,15 +455,39 @@ namespace Practice
                 reader1.Close();
                 database.closeConnection();
 
-                ////////////////////////
-                // сделать матрицу оценок для класса
-                ////////////////////////
-
-                MySqlCommand commandMarks = new MySqlCommand
-                   ("SELECT `name`, `mark`, `date` FROM `marks` WHERE `class` = @class AND `subject` = @subject ORDER BY name", database.getConnection());
+                MySqlCommand commandMarks = new MySqlCommand(strMarks, database.getConnection());
                 commandMarks.Parameters.AddWithValue("@class", this.classComboBox.Text);
+                commandMarks.Parameters.AddWithValue("@subject", this.subjectComboBox.Text);
+                commandMarks.Parameters.AddWithValue("@month", GetMonth(monthComboBox.Text));
                 database.openConnection();
-                MySqlDataReader reader2 = commandNames.ExecuteReader();
+                MySqlDataReader reader3 = commandMarks.ExecuteReader();
+
+                String[,] marks = new String[rows - 1, columns - 1];
+                index = 0;
+
+                for (int i = 0; i < rows - 1; i++)
+                {
+                    for (int j = 0; j < columns - 1; j++)
+                    {
+                        marks[i, j] = "";
+                    }
+                }
+
+                while (reader3.Read())
+                {
+                    if (reader3.GetValue(0).ToString() == names[index])
+                    {
+                        marks[index, Int32.Parse(reader3.GetValue(1).ToString()) - 1] = reader3.GetValue(2).ToString();
+                    }
+                    else
+                    {
+                        index++;
+                        marks[index, Int32.Parse(reader3.GetValue(1).ToString()) - 1] = reader3.GetValue(2).ToString();
+                    }
+                }
+
+                reader3.Close();
+                database.closeConnection();
 
                 TableLayoutRowStyleCollection styles = table.RowStyles;
                 foreach (RowStyle style in styles)
@@ -352,30 +501,65 @@ namespace Practice
                     style.SizeType = SizeType.AutoSize;
                 }
 
+                Button sort = new Button();
+                if (sortType)
+                {
+                    sort.Text = "В алфавитном порядке";
+                }
+                else
+                {
+                    sort.Text = "Против алфавитного порядка";
+                }
+                sort.Font = new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular);
+                sort.Click += new EventHandler(sort_click);
+                sort.Size = new Size(300, 30);
+                //sort.Dock = DockStyle.Fill;
+                table.Controls.Add(sort);
+
                 for (int i = 0; i < rows; i++)
                 {
                     for (int j = 0; j < columns; j++)
                     {
+                        if (i == 0 && j == 0)
+                        {
+                            continue;
+                        }
+
                         Label label = new Label();
                         label.Font = new Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular);
+                        label.AutoSize = false;
+
                         if (i == 0 && j > 0)
                         {
                             label.Text = j.ToString();
-                            label.Size = new System.Drawing.Size(100, 20);
+                            //label.Size = new System.Drawing.Size(25, 20);
+                            label.BackColor = Color.FromArgb(181, 234, 177);
                         }
 
                         if (i > 0 && j == 0)
                         {
                             label.Text = names[i - 1];
-                            label.Size = new System.Drawing.Size(300, 20);
+                            //label.Size = new System.Drawing.Size(300, 20);
+                            label.BackColor = Color.FromArgb(181, 234, 177);
                         }
 
-                        //label.Text = marks[i][j];
+                        if (i > 0 && j > 0)
+                        {
+                            if (i % 2 == 0)
+                            {
+                                label.BackColor = Color.FromArgb(208, 208, 208);
+                            }
+                            label.Text = marks[i - 1, j - 1];
+                        }
+                        label.Dock = DockStyle.Fill;
                         table.Controls.Add(label);
                     }
                 }
+                table.ResumeLayout();
+                table.Visible = true;
+            }
+        }
 
-<<<<<<< HEAD
         private int GetMonth(String str)
         {
             switch (str)
@@ -415,7 +599,7 @@ namespace Practice
             }
             else
             {
-                DatabaseSingleton database = DatabaseSingleton.GetInstance();
+                Database database = new Database();
                 MySqlCommand command = new MySqlCommand
                     ("SELECT * FROM marks WHERE `class` = @class AND `subject` = @subject", database.getConnection());
                 command.Parameters.AddWithValue("@class", this.classComboBox.Text);
@@ -462,17 +646,22 @@ namespace Practice
                     bw.Write(csv.ToString());
                     bw.Dispose();
                 }
-=======
-                table.Visible = true;
->>>>>>> parent of a45424e... CLOSE
             }
         }
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            this.Close();
-            EditForm editForm = new EditForm(id, role);
+            Form editForm = Application.OpenForms[0];
+            if (Application.OpenForms["EditForm"] != null)
+            {
+                editForm = Application.OpenForms["EditForm"];
+            }
+            else
+            {
+                editForm = new EditForm(id, role);
+            }
             editForm.Show();
+            this.Hide();
         }
     }
 }

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,8 +18,6 @@ namespace Practice
         public LoginForm()
         {
             InitializeComponent();
-
-            this.StartPosition = FormStartPosition.CenterScreen;
             this.buttonExit.FlatAppearance.BorderSize = 0;
             this.ActiveControl = null;
             this.loginField.Text = " Логин";
@@ -25,13 +25,9 @@ namespace Practice
             this.passwordField.Text = " Пароль";
             this.passwordField.ForeColor = Color.FromArgb(188, 188, 188);
             this.label3.ForeColor = Color.FromArgb(164, 164, 164);
-<<<<<<< HEAD
 
-            //DatabaseSingleton database = DatabaseSingleton.GetInstance();
-            DatabaseSingleton database = DatabaseSingleton.GetInstance();
-
+            Database database = new Database();
             String randId = "";
-
             MySqlCommand commandGetId = new MySqlCommand
                 ("SELECT `id` FROM `images` ORDER BY rand() LIMIT 1", database.getConnection());
             database.openConnection();
@@ -64,8 +60,6 @@ namespace Practice
             }
             reader2.Close();
             database.closeConnection();
-=======
->>>>>>> parent of a45424e... CLOSE
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -144,15 +138,7 @@ namespace Practice
             string enteredLogin = this.loginField.Text;
             string enteredPassword = this.passwordField.Text;
 
-<<<<<<< HEAD
-            DatabaseSingleton database = DatabaseSingleton.GetInstance();
-=======
-            // !!!!!!!!!!!!!!!!!!!!!
-            // добавить проерку на пустоту полей + уведомление об этом
-            // !!!!!!!!!!!!!!!!!!!!!
-
             Database database = new Database();
->>>>>>> parent of a45424e... CLOSE
             MySqlCommand commandTeacher = new MySqlCommand
                 ("SELECT * FROM `teachers` WHERE `login` = @eLt AND `password` = @ePt", database.getConnection());
             commandTeacher.Parameters.Add("@eLt", MySqlDbType.VarChar).Value = enteredLogin;
@@ -162,15 +148,23 @@ namespace Practice
 
             if (reader.Read())
             {
-                //MessageBox.Show("teacher");
-                this.Hide();
-                AdsForm adsForm = new AdsForm(reader.GetValue(0).ToString(), reader.GetValue(9).ToString());
+                Form adsForm = Application.OpenForms[0];
+                if (Application.OpenForms["AdsForm"] != null)
+                {
+                    adsForm = Application.OpenForms["AdsForm"];
+                }
+                else
+                {
+                    adsForm = new AdsForm(reader.GetValue(0).ToString(), reader.GetValue(9).ToString());
+                }
+                adsForm.Left = this.Left;
+                adsForm.Top = this.Top;
                 adsForm.Show();
+                this.Hide();
                 database.closeConnection();
                 flag = true;
             }
             reader.Close();
-
 
             MySqlCommand commandStudent = new MySqlCommand
                 ("SELECT * FROM `student` WHERE `login` = @eLs AND `password` = @ePs", database.getConnection());
@@ -180,14 +174,24 @@ namespace Practice
             MySqlDataReader reader1 = commandStudent.ExecuteReader();
             if (reader1.Read())
             {
-                //MessageBox.Show("student");
-                this.Hide();
-                AdsForm adsForm = new AdsForm(reader1.GetValue(0).ToString(), reader1.GetValue(4).ToString());
-                adsForm.Show();
-                database.closeConnection();
                 flag = true;
+
+                Form adsForm = Application.OpenForms[0];
+                if (Application.OpenForms["AdsForm"] != null)
+                {
+                    adsForm = Application.OpenForms["AdsForm"];
+                }
+                else
+                {
+                    adsForm = new AdsForm(reader1.GetValue(0).ToString(), reader1.GetValue(4).ToString());
+                }
+                adsForm.Left = this.Left;
+                adsForm.Top = this.Top;
+                adsForm.Show();
+                this.Hide();
             }
             reader1.Close();
+            database.closeConnection();
 
             if (!flag)
             {
@@ -207,9 +211,19 @@ namespace Practice
 
         private void label3_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            registrationForm registrationForm = new registrationForm();
+            Form registrationForm = Application.OpenForms[0];
+            if (Application.OpenForms["RegistrationForm"] != null)
+            {
+                registrationForm = Application.OpenForms["RegistrationForm"];
+            }
+            else
+            {
+                registrationForm = new RegistrationForm();
+            }
+            registrationForm.Left = this.Left;
+            registrationForm.Top = this.Top;
             registrationForm.Show();
+            this.Hide();
         }
     }
 }

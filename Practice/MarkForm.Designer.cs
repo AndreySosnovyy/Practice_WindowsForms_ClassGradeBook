@@ -59,6 +59,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.studentComboBox = new System.Windows.Forms.ComboBox();
             this.setMarkButton = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -267,7 +268,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(244, 48);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Объявления";
+            this.label2.Text = "Объявление";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel1
@@ -323,7 +324,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(522, 170);
+            this.label6.Location = new System.Drawing.Point(522, 198);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 29);
             this.label6.TabIndex = 13;
@@ -333,7 +334,7 @@
             // 
             this.classComboBox.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.classComboBox.FormattingEnabled = true;
-            this.classComboBox.Location = new System.Drawing.Point(606, 167);
+            this.classComboBox.Location = new System.Drawing.Point(606, 195);
             this.classComboBox.Name = "classComboBox";
             this.classComboBox.Size = new System.Drawing.Size(95, 36);
             this.classComboBox.TabIndex = 12;
@@ -343,7 +344,7 @@
             // 
             this.dateTimePicker.CalendarFont = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.dateTimePicker.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTimePicker.Location = new System.Drawing.Point(606, 341);
+            this.dateTimePicker.Location = new System.Drawing.Point(606, 369);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.Size = new System.Drawing.Size(315, 35);
             this.dateTimePicker.TabIndex = 14;
@@ -352,7 +353,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(522, 341);
+            this.label7.Location = new System.Drawing.Point(522, 369);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 29);
             this.label7.TabIndex = 15;
@@ -362,16 +363,16 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(478, 434);
+            this.label8.Location = new System.Drawing.Point(505, 465);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(122, 29);
+            this.label8.Size = new System.Drawing.Size(95, 29);
             this.label8.TabIndex = 16;
-            this.label8.Text = "Значение";
+            this.label8.Text = "Оценка";
             // 
             // valueField
             // 
             this.valueField.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.valueField.Location = new System.Drawing.Point(606, 431);
+            this.valueField.Location = new System.Drawing.Point(606, 459);
             this.valueField.Name = "valueField";
             this.valueField.Size = new System.Drawing.Size(210, 35);
             this.valueField.TabIndex = 17;
@@ -380,7 +381,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(505, 256);
+            this.label9.Location = new System.Drawing.Point(505, 284);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(95, 29);
             this.label9.TabIndex = 19;
@@ -390,7 +391,7 @@
             // 
             this.studentComboBox.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.studentComboBox.FormattingEnabled = true;
-            this.studentComboBox.Location = new System.Drawing.Point(606, 251);
+            this.studentComboBox.Location = new System.Drawing.Point(606, 277);
             this.studentComboBox.Name = "studentComboBox";
             this.studentComboBox.Size = new System.Drawing.Size(450, 36);
             this.studentComboBox.TabIndex = 18;
@@ -398,7 +399,7 @@
             // setMarkButton
             // 
             this.setMarkButton.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.setMarkButton.Location = new System.Drawing.Point(867, 519);
+            this.setMarkButton.Location = new System.Drawing.Point(867, 524);
             this.setMarkButton.Name = "setMarkButton";
             this.setMarkButton.Size = new System.Drawing.Size(175, 50);
             this.setMarkButton.TabIndex = 20;
@@ -406,12 +407,23 @@
             this.setMarkButton.UseVisualStyleBackColor = true;
             this.setMarkButton.Click += new System.EventHandler(this.setMarkButton_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Bahnschrift Light", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(471, 65);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(547, 72);
+            this.label10.TabIndex = 21;
+            this.label10.Text = "Оценивание работ";
+            // 
             // MarkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(1123, 635);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.setMarkButton);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.studentComboBox);
@@ -424,7 +436,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MarkForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "MarkForm";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -483,5 +497,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox studentComboBox;
         private System.Windows.Forms.Button setMarkButton;
+        private System.Windows.Forms.Label label10;
     }
 }

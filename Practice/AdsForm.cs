@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +19,14 @@ namespace Practice
         public AdsForm(String id, String role)
         {
             InitializeComponent();
+
+            Singleton singleton = Singleton.GetInstance();
+            singleton.CreateTable("example");
+
             this.id = id;
             this.role = role;
 
             this.exitButton.ForeColor = Color.FromArgb(164, 164, 164);
-            this.StartPosition = FormStartPosition.CenterScreen;
 
            switch(role)
             {
@@ -35,8 +39,7 @@ namespace Practice
                     break;
             }
 
-
-            DatabaseSingleton database = DatabaseSingleton.GetInstance();
+            Database database = new Database();
             MySqlCommand commandTeacher = new MySqlCommand
                 ("SELECT `text` FROM `ads` WHERE `id` = 1", database.getConnection());
             database.openConnection();
@@ -46,11 +49,12 @@ namespace Practice
             {
                 adsText.Text = reader.GetValue(0).ToString();
             }
-            reader.Close();
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
+            Singleton singleton = Singleton.GetInstance();
+            singleton.DeleteTable("example");
             Application.Exit();
         }
 
@@ -92,93 +96,227 @@ namespace Practice
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
+            int temp = -1;
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                if (Application.OpenForms[i].Name != "LoginForm")
+                {
+                    Application.OpenForms[i].Close();
+                }
+                else
+                {
+                    temp = i;
+                }
+            }
+
+            if (temp != -1)
+            {
+                Application.OpenForms[temp].Show();
+            }
         }
 
         private void timetablePanel_Click(object sender, EventArgs e)
         {
-            this.Close();
-            TimetableForm timetableForm = new TimetableForm(id, role);
+            Form timetableForm = Application.OpenForms[0];
+            if (Application.OpenForms["TimetableForm"] != null)
+            {
+                timetableForm = Application.OpenForms["TimetableForm"];
+            }
+            else
+            {
+                timetableForm = new TimetableForm(id, role);
+            }
+            timetableForm.Left = this.Left;
+            timetableForm.Top = this.Top;
             timetableForm.Show();
+            this.Hide();
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-            this.Close();
-            TimetableForm timetableForm = new TimetableForm(id, role);
+            Form timetableForm = Application.OpenForms[0];
+            if (Application.OpenForms["TimetableForm"] != null)
+            {
+                timetableForm = Application.OpenForms["TimetableForm"];
+            }
+            else
+            {
+                timetableForm = new TimetableForm(id, role);
+            }
+            timetableForm.Left = this.Left;
+            timetableForm.Top = this.Top;
             timetableForm.Show();
+            this.Hide();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            this.Close();
-            TimetableForm timetableForm = new TimetableForm(id, role);
+            Form timetableForm = Application.OpenForms[0];
+            if (Application.OpenForms["TimetableForm"] != null)
+            {
+                timetableForm = Application.OpenForms["TimetableForm"];
+            }
+            else
+            {
+                timetableForm = new TimetableForm(id, role);
+            }
+            timetableForm.Left = this.Left;
+            timetableForm.Top = this.Top;
             timetableForm.Show();
+            this.Hide();
         }
 
         private void logPanel_Click(object sender, EventArgs e)
         {
-            this.Close();
-            BookForm bookForm = new BookForm(id, role);
+            Form bookForm = Application.OpenForms[0];
+            if (Application.OpenForms["BookForm"] != null)
+            {
+                bookForm = Application.OpenForms["BookForm"];
+            }
+            else
+            {
+                bookForm = new BookForm(id, role);
+            }
+            bookForm.Left = this.Left;
+            bookForm.Top = this.Top;
             bookForm.Show();
+            this.Hide();
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-            this.Close();
-            BookForm bookForm = new BookForm(id, role);
+            Form bookForm = Application.OpenForms[0];
+            if (Application.OpenForms["BookForm"] != null)
+            {
+                bookForm = Application.OpenForms["BookForm"];
+            }
+            else
+            {
+                bookForm = new BookForm(id, role);
+            }
+            bookForm.Left = this.Left;
+            bookForm.Top = this.Top;
             bookForm.Show();
+            this.Hide();
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            this.Close();
-            BookForm bookForm = new BookForm(id, role);
+            Form bookForm = Application.OpenForms[0];
+            if (Application.OpenForms["BookForm"] != null)
+            {
+                bookForm = Application.OpenForms["BookForm"];
+            }
+            else
+            {
+                bookForm = new BookForm(id, role);
+            }
+            bookForm.Left = this.Left;
+            bookForm.Top = this.Top;
             bookForm.Show();
+            this.Hide();
         }
 
         private void markPanel_Click(object sender, EventArgs e)
         {
-            this.Close();
-            MarkForm markForm = new MarkForm(id, role);
+            Form markForm = Application.OpenForms[0];
+            if (Application.OpenForms["MarkForm"] != null)
+            {
+                markForm = Application.OpenForms["MarkForm"];
+            }
+            else
+            {
+                markForm = new MarkForm(id, role);
+            }
+            markForm.Left = this.Left;
+            markForm.Top = this.Top;
             markForm.Show();
+            this.Hide();
         }
 
         private void label5_Click(object sender, EventArgs e)
         {
-            this.Close();
-            MarkForm markForm = new MarkForm(id, role);
+            Form markForm = Application.OpenForms[0];
+            if (Application.OpenForms["MarkForm"] != null)
+            {
+                markForm = Application.OpenForms["MarkForm"];
+            }
+            else
+            {
+                markForm = new MarkForm(id, role);
+            }
+            markForm.Left = this.Left;
+            markForm.Top = this.Top;
             markForm.Show();
+            this.Hide();
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-            this.Close();
-            MarkForm markForm = new MarkForm(id, role);
+            Form markForm = Application.OpenForms[0];
+            if (Application.OpenForms["MarkForm"] != null)
+            {
+                markForm = Application.OpenForms["MarkForm"];
+            }
+            else
+            {
+                markForm = new MarkForm(id, role);
+            }
+            markForm.Left = this.Left;
+            markForm.Top = this.Top;
             markForm.Show();
+            this.Hide();
         }
 
         private void panel7_Click(object sender, EventArgs e)
         {
-            this.Close();
-            EditForm editForm = new EditForm(id, role);
+            Form editForm = Application.OpenForms[0];
+            if (Application.OpenForms["EditForm"] != null)
+            {
+                editForm = Application.OpenForms["EditForm"];
+            }
+            else
+            {
+                editForm = new EditForm(id, role);
+            }
+            editForm.Left = this.Left;
+            editForm.Top = this.Top;
             editForm.Show();
+            this.Hide();
         }
 
         private void editPanel_Click(object sender, EventArgs e)
         {
-            this.Close();
-            EditForm editForm = new EditForm(id, role);
+            Form editForm = Application.OpenForms[0];
+            if (Application.OpenForms["EditForm"] != null)
+            {
+                editForm = Application.OpenForms["EditForm"];
+            }
+            else
+            {
+                editForm = new EditForm(id, role);
+            }
+            editForm.Left = this.Left;
+            editForm.Top = this.Top;
             editForm.Show();
+            this.Hide();
         }
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {
-            this.Close();
-            EditForm editForm = new EditForm(id, role);
+            Form editForm = Application.OpenForms[0];
+            if (Application.OpenForms["EditForm"] != null)
+            {
+                editForm = Application.OpenForms["EditForm"];
+            }
+            else
+            {
+                editForm = new EditForm(id, role);
+            }
+            editForm.Left = this.Left;
+            editForm.Top = this.Top;
             editForm.Show();
+            this.Hide();
         }
     }
 }
