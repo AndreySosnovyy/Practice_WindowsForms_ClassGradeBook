@@ -21,7 +21,6 @@ namespace Practice
             this.role = role;
 
             this.exitButton.ForeColor = Color.FromArgb(164, 164, 164);
-            this.StartPosition = FormStartPosition.CenterScreen;
 
             switch (role)
             {
@@ -78,99 +77,251 @@ namespace Practice
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
+            int temp = -1;
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                if (Application.OpenForms[i].Name != "LoginForm")
+                {
+                    Application.OpenForms[i].Close();
+                }
+                else
+                {
+                    temp = i;
+                }
+            }
+
+            if (temp != -1)
+            {
+                Application.OpenForms[temp].Show();
+            }
         }
 
         private void adsPanel_Click(object sender, EventArgs e)
         {
-            this.Close();
-            AdsForm adsForm = new AdsForm(id, role);
+            Form adsForm = Application.OpenForms[0];
+            if (Application.OpenForms["AdsForm"] != null)
+            {
+                adsForm = Application.OpenForms["AdsForm"];
+            }
+            else
+            {
+                adsForm = new AdsForm(id, role);
+            }
+            adsForm.Left = this.Left;
+            adsForm.Top = this.Top;
             adsForm.Show();
+            this.Hide();
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-            this.Close();
-            AdsForm adsForm = new AdsForm(id, role);
+            Form adsForm = Application.OpenForms[0];
+            if (Application.OpenForms["AdsForm"] != null)
+            {
+                adsForm = Application.OpenForms["AdsForm"];
+            }
+            else
+            {
+                adsForm = new AdsForm(id, role);
+            }
+            adsForm.Left = this.Left;
+            adsForm.Top = this.Top;
             adsForm.Show();
+            this.Hide();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            this.Close();
-            AdsForm adsForm = new AdsForm(id, role);
+            Form adsForm = Application.OpenForms[0];
+            if (Application.OpenForms["AdsForm"] != null)
+            {
+                adsForm = Application.OpenForms["AdsForm"];
+            }
+            else
+            {
+                adsForm = new AdsForm(id, role);
+            }
+            adsForm.Left = this.Left;
+            adsForm.Top = this.Top;
             adsForm.Show();
+            this.Hide();
         }
 
         private void timetablePanel_Click(object sender, EventArgs e)
         {
-            this.Close();
-            TimetableForm timetableForm = new TimetableForm(id, role);
+            Form timetableForm = Application.OpenForms[0];
+            if (Application.OpenForms["TimetableForm"] != null)
+            {
+                timetableForm = Application.OpenForms["TimetableForm"];
+            }
+            else
+            {
+                timetableForm = new TimetableForm(id, role);
+            }
+            timetableForm.Left = this.Left;
+            timetableForm.Top = this.Top;
             timetableForm.Show();
+            this.Hide();
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-            this.Close();
-            TimetableForm timetableForm = new TimetableForm(id, role);
+            Form timetableForm = Application.OpenForms[0];
+            if (Application.OpenForms["TimetableForm"] != null)
+            {
+                timetableForm = Application.OpenForms["TimetableForm"];
+            }
+            else
+            {
+                timetableForm = new TimetableForm(id, role);
+            }
+            timetableForm.Left = this.Left;
+            timetableForm.Top = this.Top;
             timetableForm.Show();
+            this.Hide();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            this.Close();
-            TimetableForm timetableForm = new TimetableForm(id, role);
+            Form timetableForm = Application.OpenForms[0];
+            if (Application.OpenForms["TimetableForm"] != null)
+            {
+                timetableForm = Application.OpenForms["TimetableForm"];
+            }
+            else
+            {
+                timetableForm = new TimetableForm(id, role);
+            }
+            timetableForm.Left = this.Left;
+            timetableForm.Top = this.Top;
             timetableForm.Show();
+            this.Hide();
         }
 
         private void logPanel_Click(object sender, EventArgs e)
         {
-            this.Close();
-            BookForm bookForm = new BookForm(id, role);
+            Form bookForm = Application.OpenForms[0];
+            if (Application.OpenForms["BookForm"] != null)
+            {
+                bookForm = Application.OpenForms["BookForm"];
+            }
+            else
+            {
+                bookForm = new BookForm(id, role);
+            }
+            bookForm.Left = this.Left;
+            bookForm.Top = this.Top;
             bookForm.Show();
+            this.Hide();
         }
 
         private void label4_Click(object sender, EventArgs e)
         {
-            this.Close();
-            BookForm bookForm = new BookForm(id, role);
+            Form bookForm = Application.OpenForms[0];
+            if (Application.OpenForms["BookForm"] != null)
+            {
+                bookForm = Application.OpenForms["BookForm"];
+            }
+            else
+            {
+                bookForm = new BookForm(id, role);
+            }
+            bookForm.Left = this.Left;
+            bookForm.Top = this.Top;
             bookForm.Show();
+            this.Hide();
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            this.Close();
-            BookForm bookForm = new BookForm(id, role);
+            Form bookForm = Application.OpenForms[0];
+            if (Application.OpenForms["BookForm"] != null)
+            {
+                bookForm = Application.OpenForms["BookForm"];
+            }
+            else
+            {
+                bookForm = new BookForm(id, role);
+            }
+            bookForm.Left = this.Left;
+            bookForm.Top = this.Top;
             bookForm.Show();
+            this.Hide();
         }
 
         private void markPanel_Click(object sender, EventArgs e)
         {
-            this.Close();
-            MarkForm markForm = new MarkForm(id, role);
+            Form markForm = Application.OpenForms[0];
+            if (Application.OpenForms["MarkForm"] != null)
+            {
+                markForm = Application.OpenForms["MarkForm"];
+            }
+            else
+            {
+                markForm = new MarkForm(id, role);
+            }
+            markForm.Left = this.Left;
+            markForm.Top = this.Top;
             markForm.Show();
+            this.Hide();
         }
 
         private void label5_Click(object sender, EventArgs e)
         {
-            this.Close();
-            MarkForm markForm = new MarkForm(id, role);
+            Form markForm = Application.OpenForms[0];
+            if (Application.OpenForms["MarkForm"] != null)
+            {
+                markForm = Application.OpenForms["MarkForm"];
+            }
+            else
+            {
+                markForm = new MarkForm(id, role);
+            }
+            markForm.Left = this.Left;
+            markForm.Top = this.Top;
             markForm.Show();
+            this.Hide();
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-            this.Close();
-            MarkForm markForm = new MarkForm(id, role);
+            Form markForm = Application.OpenForms[0];
+            if (Application.OpenForms["MarkForm"] != null)
+            {
+                markForm = Application.OpenForms["MarkForm"];
+            }
+            else
+            {
+                markForm = new MarkForm(id, role);
+            }
+            markForm.Left = this.Left;
+            markForm.Top = this.Top;
             markForm.Show();
+            this.Hide();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             CreateTokenForm createTokenForm = new CreateTokenForm(id, role);
             createTokenForm.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AddTimetableForm addTimetableForm = new AddTimetableForm(id, role);
+            addTimetableForm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DelUserForm delUserForm = new DelUserForm(id, role);
+            delUserForm.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            EditMarkForm editMarkForm = new EditMarkForm(id, role);
+            editMarkForm.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)

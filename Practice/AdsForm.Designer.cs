@@ -307,7 +307,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(244, 48);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Объявления";
+            this.label2.Text = "Объявление";
             // 
             // label7
             // 
@@ -332,7 +332,7 @@
             // 
             this.adsText.AutoSize = true;
             this.adsText.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.adsText.Location = new System.Drawing.Point(443, 201);
+            this.adsText.Location = new System.Drawing.Point(437, 167);
             this.adsText.MaximumSize = new System.Drawing.Size(650, 0);
             this.adsText.Name = "adsText";
             this.adsText.Size = new System.Drawing.Size(222, 33);
@@ -352,8 +352,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdsForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "TeacherMainForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

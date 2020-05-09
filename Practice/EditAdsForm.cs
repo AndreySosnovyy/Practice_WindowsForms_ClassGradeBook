@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,8 @@ namespace Practice
             InitializeComponent();
             this.id = id;
             this.role = role;
+
+            this.pictureHided.Hide();
 
             this.StartPosition = FormStartPosition.CenterScreen;
 
@@ -70,6 +73,7 @@ namespace Practice
             database.openConnection();
             command.ExecuteNonQuery();
             database.closeConnection();
+            this.Close();
         }
 
         private void label2_MouseEnter(object sender, EventArgs e)
@@ -80,6 +84,55 @@ namespace Practice
         private void label2_MouseLeave(object sender, EventArgs e)
         {
             this.label2.BackColor = Color.FromArgb(182, 182, 182);
+        }
+
+        private byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+                return ms.ToArray();
+            }
+        }
+
+        private void newImageButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                pictureHided.Image = Image.FromFile(dialog.FileName);
+
+                MemoryStream ms = new MemoryStream();
+                pictureHided.Image.Save(ms, pictureHided.Image.RawFormat);
+                byte[] img = ms.ToArray();
+
+                Database database = new Database();
+                MySqlCommand command = new MySqlCommand
+                    ("INSERT INTO `images` (image) VALUES (@img)", database.getConnection());
+                command.Parameters.Add("@img", MySqlDbType.Blob);
+                command.Parameters["@img"].Value = img;
+                database.openConnection();
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Изображение загружено");
+                }
+                database.closeConnection();
+                this.Close();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Database database = new Database();
+            MySqlCommand command = new MySqlCommand
+                ("DELETE FROM `images` WHERE `id` > 0", database.getConnection());
+            database.openConnection();
+            if (command.ExecuteNonQuery() > 0)
+            {
+                MessageBox.Show("Список изображений пуст", "Уведомление");
+            }
+            database.closeConnection();
+            this.Close();
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
