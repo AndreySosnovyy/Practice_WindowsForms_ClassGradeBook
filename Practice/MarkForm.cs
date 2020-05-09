@@ -297,7 +297,7 @@ namespace Practice
             this.studentComboBox.Items.Clear();
             this.studentComboBox.Text = "";
 
-            Database database = new Database();
+            DatabaseSingleton database = DatabaseSingleton.GetInstance();
             MySqlCommand commandCount = new MySqlCommand
                 ("SELECT `id`, COUNT(*) FROM `student` WHERE `class` = @class", database.getConnection());
             commandCount.Parameters.AddWithValue("@class", this.classComboBox.Text);
@@ -341,7 +341,7 @@ namespace Practice
             String date = dateTimePicker.Value.ToString();
             date = "" + date[6] + date[7] + date[8] + date[9] + "-" + date[3] + date[4] + "-" + date[0] + date[1];
 
-            Database database = new Database();
+            DatabaseSingleton database = DatabaseSingleton.GetInstance();
             MySqlCommand command = new MySqlCommand
                 ("SELECT `subject` FROM `teachers` WHERE id = @id", database.getConnection());
             command.Parameters.AddWithValue("@id", id);

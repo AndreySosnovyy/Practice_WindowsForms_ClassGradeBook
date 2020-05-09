@@ -35,7 +35,8 @@ namespace Practice
                     break;
             }
 
-            Database database = new Database();
+
+            DatabaseSingleton database = DatabaseSingleton.GetInstance();
             MySqlCommand commandTeacher = new MySqlCommand
                 ("SELECT `text` FROM `ads` WHERE `id` = 1", database.getConnection());
             database.openConnection();
@@ -45,6 +46,7 @@ namespace Practice
             {
                 adsText.Text = reader.GetValue(0).ToString();
             }
+            reader.Close();
         }
 
         private void buttonExit_Click(object sender, EventArgs e)

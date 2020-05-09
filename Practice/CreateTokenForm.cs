@@ -90,7 +90,7 @@ namespace Practice
 
         private void generateButton_Click(object sender, EventArgs e)
         {
-            Database database = new Database();
+            DatabaseSingleton database = DatabaseSingleton.GetInstance();
             MySqlCommand commandGetName = new MySqlCommand
                 ("SELECT `firstName`, `secondName`, `thirdName` FROM `teachers` WHERE id = @id", database.getConnection());
             commandGetName.Parameters.AddWithValue("@id", id);
@@ -178,7 +178,7 @@ namespace Practice
                     BinaryWriter bw = new BinaryWriter(File.Create(path));
                     String token = generator();
 
-                    Database database = new Database();
+                    DatabaseSingleton database = DatabaseSingleton.GetInstance();
                     MySqlCommand commandGetName = new MySqlCommand
                         ("SELECT `firstName`, `secondName`, `thirdName` FROM `teachers` WHERE id = @id", database.getConnection());
                     commandGetName.Parameters.AddWithValue("@id", id);

@@ -5,11 +5,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Practice
 {
-    class Database
+    class DatabaseSingleton
     {
-        MySqlConnection connection = new 
+        
+        private DatabaseSingleton() { }
+
+        private static DatabaseSingleton _instance;
+        public static DatabaseSingleton GetInstance()
+        {
+            if (_instance == null)
+            {
+                _instance = new DatabaseSingleton();
+            }
+            return _instance;
+        }
+
+        MySqlConnection connection = new
             MySqlConnection("server=localhost;port=3306;username=root;password=;database=practice");
 
         public void openConnection()

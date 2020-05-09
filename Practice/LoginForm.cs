@@ -27,8 +27,8 @@ namespace Practice
             this.passwordField.ForeColor = Color.FromArgb(188, 188, 188);
             this.label3.ForeColor = Color.FromArgb(164, 164, 164);
 
-            Database database = new Database();
-            //SELECT pk_id FROM test ORDER BY rand() LIMIT 1
+            //DatabaseSingleton database = DatabaseSingleton.GetInstance();
+            DatabaseSingleton database = DatabaseSingleton.GetInstance();
 
             String randId = "";
 
@@ -142,7 +142,7 @@ namespace Practice
             string enteredLogin = this.loginField.Text;
             string enteredPassword = this.passwordField.Text;
 
-            Database database = new Database();
+            DatabaseSingleton database = DatabaseSingleton.GetInstance();
             MySqlCommand commandTeacher = new MySqlCommand
                 ("SELECT * FROM `teachers` WHERE `login` = @eLt AND `password` = @ePt", database.getConnection());
             commandTeacher.Parameters.Add("@eLt", MySqlDbType.VarChar).Value = enteredLogin;

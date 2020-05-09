@@ -63,7 +63,7 @@ namespace Practice
 
             this.exitButton.ForeColor = Color.FromArgb(164, 164, 164);
 
-            Database database = new Database();
+            DatabaseSingleton database = DatabaseSingleton.GetInstance();
             switch (role)
             {
                 case "0":
@@ -405,7 +405,7 @@ namespace Practice
             }
 
             String result = "";
-            Database database = new Database();
+            DatabaseSingleton database = DatabaseSingleton.GetInstance();
             MySqlCommand commandTimetable = new MySqlCommand
                 ("SELECT * FROM `timetable` WHERE `class` = @class", database.getConnection());
 
@@ -477,7 +477,7 @@ namespace Practice
                 String str = "UPDATE `timetable` SET " + dayStr +
                     "= @str WHERE `timetable`.`id` = @id";
 
-                Database database = new Database();
+                DatabaseSingleton database = DatabaseSingleton.GetInstance();
                 MySqlCommand commandTimetable = new MySqlCommand
                     (str, database.getConnection());
                 commandTimetable.Parameters.AddWithValue("@str", toDB);
@@ -537,7 +537,7 @@ namespace Practice
             }
             else
             {
-                Database database = new Database();
+                DatabaseSingleton database = DatabaseSingleton.GetInstance();
                 MySqlCommand commandTimetable = new MySqlCommand
                     ("SELECT * FROM `timetable` WHERE `class` = @class", database.getConnection());
 
@@ -572,7 +572,11 @@ namespace Practice
 
                     System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo(@"C:\Users\Default\Documents\temp.txt");
                     psi.Verb = "PRINT";
+                    psi.CreateNoWindow = true;
+                    psi.WindowStyle = ProcessWindowStyle.Hidden;
                     Process.Start(psi);
+
+                    //File.Delete(@"C:\Users\Default\Documents\temp.txt");
                 }
             }
         }

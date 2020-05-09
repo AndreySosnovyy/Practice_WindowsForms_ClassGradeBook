@@ -62,7 +62,7 @@ namespace Practice
             this.studentComboBox.Items.Clear();
             this.studentComboBox.Text = "";
 
-            Database database = new Database();
+            DatabaseSingleton database = DatabaseSingleton.GetInstance();
             MySqlCommand commandCount = new MySqlCommand
                 ("SELECT `id`, COUNT(*) FROM `student` WHERE `class` = @class", database.getConnection());
             commandCount.Parameters.AddWithValue("@class", this.classComboBox.Text);
@@ -103,7 +103,7 @@ namespace Practice
         {
             String[] names = studentComboBox.Text.Split(' '); 
 
-            Database database = new Database();
+            DatabaseSingleton database = DatabaseSingleton.GetInstance();
             MySqlCommand commandDelS = new MySqlCommand
                 ("DELETE FROM `student` WHERE `secondName` = @sn AND" +
                 " `firstName` = @fn AND `thirdName` = @tn", database.getConnection());

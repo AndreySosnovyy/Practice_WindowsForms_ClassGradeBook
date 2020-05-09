@@ -88,7 +88,7 @@ namespace Practice
 
             if (role == "0")
             {
-                Database database = new Database();
+                DatabaseSingleton database = DatabaseSingleton.GetInstance();
                 MySqlCommand command = new MySqlCommand
                     ("SELECT `class` FROM `student` WHERE id = @id", database.getConnection());
                 command.Parameters.AddWithValue("@id", id);
@@ -104,7 +104,7 @@ namespace Practice
 
             if (role == "1" || role == "2")
             {
-                Database database = new Database();
+                DatabaseSingleton database = DatabaseSingleton.GetInstance();
                 MySqlCommand command = new MySqlCommand
                     ("SELECT `subject` FROM `teachers` WHERE id = @id", database.getConnection());
                 command.Parameters.AddWithValue("@id", id);
@@ -418,7 +418,7 @@ namespace Practice
                         break;
                 }
 
-                Database database = new Database();
+                DatabaseSingleton database = DatabaseSingleton.GetInstance();
                 MySqlCommand command = new MySqlCommand
                     ("SELECT `id`, COUNT(*) FROM `student` WHERE `class` = @class", database.getConnection());
                 command.Parameters.AddWithValue("@class", this.classComboBox.Text);
@@ -597,7 +597,7 @@ namespace Practice
             }
             else
             {
-                Database database = new Database();
+                DatabaseSingleton database = DatabaseSingleton.GetInstance();
                 MySqlCommand command = new MySqlCommand
                     ("SELECT * FROM marks WHERE `class` = @class AND `subject` = @subject", database.getConnection());
                 command.Parameters.AddWithValue("@class", this.classComboBox.Text);

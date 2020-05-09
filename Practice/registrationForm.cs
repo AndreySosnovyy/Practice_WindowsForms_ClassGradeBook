@@ -186,7 +186,7 @@ namespace Practice
                 enterButton.Hide();
                 tokenFromFile.Hide();
 
-                Database database = new Database();
+                DatabaseSingleton database = DatabaseSingleton.GetInstance();
                 MySqlCommand command = new MySqlCommand
                     ("SELECT `type` FROM `tokens` WHERE `token` = @t", database.getConnection());
                 command.Parameters.AddWithValue("@t", enteredToken);
@@ -302,7 +302,7 @@ namespace Practice
             }
             else
             {
-                Database database = new Database();
+                DatabaseSingleton database = DatabaseSingleton.GetInstance();
                 database.openConnection();
                 MySqlCommand commandAddTeacher = new MySqlCommand
                     ("INSERT INTO `teachers` (`login`, `password`, `token`, `firstName`, `secondName`, `thirdName`, `subject`, `phoneNumber`, `role`)" +
@@ -368,7 +368,7 @@ namespace Practice
             }
             else
             {
-                Database database = new Database();
+                DatabaseSingleton database = DatabaseSingleton.GetInstance();
                 MySqlCommand commandAddStudent = new MySqlCommand
                     ("INSERT INTO `student` (`login`, `password`, `token`, `role`, `firstName`, `secondName`, `thirdName`, `class`, `phoneNumber`)" +
                     " VALUES (@login, @pass, @token, @role, @name, @sName, @tName, @class, @phone);", database.getConnection());

@@ -26,7 +26,7 @@ namespace Practice
 
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            Database database = new Database();
+            DatabaseSingleton database = DatabaseSingleton.GetInstance();
             MySqlCommand command = new MySqlCommand
                 ("SELECT `text` FROM `ads` WHERE `id` = 1", database.getConnection());
             database.openConnection();
@@ -66,7 +66,7 @@ namespace Practice
 
         private void label2_Click(object sender, EventArgs e)
         {
-            Database database = new Database();
+            DatabaseSingleton database = DatabaseSingleton.GetInstance();
             MySqlCommand command = new MySqlCommand
                 ("UPDATE `ads` SET `text` = @newText", database.getConnection());
             command.Parameters.AddWithValue("@newText", newTextField.Text);
@@ -106,7 +106,7 @@ namespace Practice
                 pictureHided.Image.Save(ms, pictureHided.Image.RawFormat);
                 byte[] img = ms.ToArray();
 
-                Database database = new Database();
+                DatabaseSingleton database = DatabaseSingleton.GetInstance();
                 MySqlCommand command = new MySqlCommand
                     ("INSERT INTO `images` (image) VALUES (@img)", database.getConnection());
                 command.Parameters.Add("@img", MySqlDbType.Blob);
@@ -123,7 +123,7 @@ namespace Practice
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Database database = new Database();
+            DatabaseSingleton database = DatabaseSingleton.GetInstance();
             MySqlCommand command = new MySqlCommand
                 ("DELETE FROM `images` WHERE `id` > 0", database.getConnection());
             database.openConnection();
