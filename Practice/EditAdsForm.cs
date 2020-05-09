@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,8 +20,6 @@ namespace Practice
             InitializeComponent();
             this.id = id;
             this.role = role;
-
-            this.pictureHided.Hide();
 
             this.StartPosition = FormStartPosition.CenterScreen;
 
@@ -73,7 +70,6 @@ namespace Practice
             database.openConnection();
             command.ExecuteNonQuery();
             database.closeConnection();
-            this.Close();
         }
 
         private void label2_MouseEnter(object sender, EventArgs e)
@@ -86,6 +82,7 @@ namespace Practice
             this.label2.BackColor = Color.FromArgb(182, 182, 182);
         }
 
+<<<<<<< HEAD
         private byte[] ImageToByteArray(System.Drawing.Image imageIn)
         {
             using (MemoryStream ms = new MemoryStream())
@@ -135,6 +132,8 @@ namespace Practice
             this.Close();
         }
 
+=======
+>>>>>>> parent of a45424e... CLOSE
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             this.ActiveControl = null;

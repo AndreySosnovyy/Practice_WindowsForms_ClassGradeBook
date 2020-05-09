@@ -5,21 +5,20 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Practice
 {
-    public partial class RegistrationForm : Form
+    public partial class registrationForm : Form
     {
-        public RegistrationForm()
+        public registrationForm()
         {
             InitializeComponent();
 
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.buttonExit.FlatAppearance.BorderSize = 0;
             this.ActiveControl = null;
             this.loginField.Text = " Логин";
@@ -179,6 +178,7 @@ namespace Practice
             }
             else
             {
+<<<<<<< HEAD
                 loginField.Hide();
                 passwordField.Hide();
                 passwordField2.Hide();
@@ -187,6 +187,9 @@ namespace Practice
                 tokenFromFile.Hide();
 
                 DatabaseSingleton database = DatabaseSingleton.GetInstance();
+=======
+                Database database = new Database();
+>>>>>>> parent of a45424e... CLOSE
                 MySqlCommand command = new MySqlCommand
                     ("SELECT `type` FROM `tokens` WHERE `token` = @t", database.getConnection());
                 command.Parameters.AddWithValue("@t", enteredToken);
@@ -248,19 +251,9 @@ namespace Practice
 
         private void label10_Click(object sender, EventArgs e)
         {
-            Form loginForm = Application.OpenForms[0];
-            if (Application.OpenForms["LoginForm"] != null)
-            {
-                loginForm = Application.OpenForms["LoginForm"];
-            }
-            else
-            {
-                loginForm = new RegistrationForm();
-            }
-            loginForm.Left = this.Left;
-            loginForm.Top = this.Top;
+            this.Close();
+            LoginForm loginForm = new LoginForm();
             loginForm.Show();
-            this.Hide();
         }
 
         private void subjectRadioButton1_CheckedChanged(object sender, EventArgs e)
@@ -279,29 +272,32 @@ namespace Practice
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String pattern = "^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$";
-            if (!Regex.IsMatch(phoneField.Text, pattern))
+            Database database = new Database();
+            database.openConnection();
+            MySqlCommand commandAddTeacher = new MySqlCommand
+                ("INSERT INTO `teachers` (`login`, `password`, `token`, `firstName`, `secondName`, `thirdName`, `subject`, `phoneNumber`, `role`)" +
+                " VALUES (@login, @pass, @token, @name, @sName, @tName, @subject, @phone, @role);", database.getConnection());
+            commandAddTeacher.Parameters.AddWithValue("@login", this.loginField.Text);
+            commandAddTeacher.Parameters.AddWithValue("@pass", this.passwordField.Text);
+            commandAddTeacher.Parameters.AddWithValue("@token", this.tokenField.Text);
+            commandAddTeacher.Parameters.AddWithValue("@name", this.nameField.Text);
+            commandAddTeacher.Parameters.AddWithValue("@sName", this.secondNameField.Text);
+            commandAddTeacher.Parameters.AddWithValue("@tName", this.thirdNameField.Text);
+            commandAddTeacher.Parameters.AddWithValue("@subject", this.subjectField.Text + this.subjectComboBox.Text);
+            commandAddTeacher.Parameters.AddWithValue("@phone", this.phoneField.Text);
+            commandAddTeacher.Parameters.AddWithValue("@role", GlobalRole);
+            database.openConnection();
+
+            if (commandAddTeacher.ExecuteNonQuery() == 1)
             {
-                MessageBox.Show("Неверный формат номера телефона", "Ошибка");
-            }
-            else if (secondNameField.Text == "")
-            {
-                MessageBox.Show("Вы не ввели фамилию", "Ошибка");
-            }
-            else if (nameField.Text == "")
-            {
-                MessageBox.Show("Вы не ввели имя", "Ошибка");
-            }
-            else if (thirdNameField.Text == "")
-            {
-                MessageBox.Show("Вы не ввели отчество", "Ошибка");
-            }
-            else if ((subjectComboBox.Text + subjectField.Text) == "")
-            {
-                MessageBox.Show("Вы не ввели название предмета", "Ошибка");
+                MessageBox.Show("Вы успешно зарегистрировались", "Регистрация");
+                this.Close();
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
             }
             else
             {
+<<<<<<< HEAD
                 DatabaseSingleton database = DatabaseSingleton.GetInstance();
                 database.openConnection();
                 MySqlCommand commandAddTeacher = new MySqlCommand
@@ -340,11 +336,17 @@ namespace Practice
                     MessageBox.Show("Не удалось зарегистрироваться", "Регистрация");
                 }
                 database.closeConnection();
+=======
+                MessageBox.Show("Не удалось зарегистрироваться", "Регистрация");
+>>>>>>> parent of a45424e... CLOSE
             }
+            database.closeConnection();
+            //}
         }
 
         private void regStudentButton_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             String pattern = "^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$";
             if (!Regex.IsMatch(phoneField.Text, pattern))
             {
@@ -415,25 +417,35 @@ namespace Practice
             ofd.Filter = "txt files(*.txt)| *.txt | All files(*.*) | *.* ";
             String tokenFromFile = "";
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+=======
+            Database database = new Database();
+            MySqlCommand commandAddStudent = new MySqlCommand
+                ("INSERT INTO `student` (`login`, `password`, `token`, `role`, `firstName`, `secondName`, `thirdName`, `class`, `phoneNumber`)" +
+                " VALUES (@login, @pass, @token, @role, @name, @sName, @tName, @class, @phone);", database.getConnection());
+            commandAddStudent.Parameters.AddWithValue("@login", this.loginField.Text);
+            commandAddStudent.Parameters.AddWithValue("@pass", this.passwordField.Text);
+            commandAddStudent.Parameters.AddWithValue("@token", this.tokenField.Text);
+            commandAddStudent.Parameters.AddWithValue("@role", GlobalRole);
+            commandAddStudent.Parameters.AddWithValue("@name", this.nameField.Text);
+            commandAddStudent.Parameters.AddWithValue("@sName", this.secondNameField.Text);
+            commandAddStudent.Parameters.AddWithValue("@tName", this.thirdNameField.Text);
+            commandAddStudent.Parameters.AddWithValue("@class", this.classField.Text);
+            commandAddStudent.Parameters.AddWithValue("@phone", this.phoneField.Text);
+            database.openConnection();
+
+            if (commandAddStudent.ExecuteNonQuery() == 1)
+>>>>>>> parent of a45424e... CLOSE
             {
-                StreamReader sr = new StreamReader(ofd.FileName);
-                tokenFromFile = sr.ReadToEnd();
-                char[] readyToken = tokenFromFile.ToCharArray();
-                this.tokenField.ForeColor = Color.FromArgb(0, 0, 0);
-                this.tokenField.Text = "";
-                if (tokenFromFile[4] == '.')
-                {
-                    for (int i = 0; i < readyToken.Length; i++)
-                    {
-                        readyToken[i] = Convert.ToChar(Convert.ToUInt64(readyToken[i]) - 1);
-                        tokenField.Text = tokenField.Text + readyToken[i].ToString();
-                    }
-                }
+                MessageBox.Show("Вы успешно зарегистрировались", "Регистрация");
+                this.Close();
+                LoginForm loginForm = new LoginForm();
+                loginForm.Show();
             }
             else
             {
-                MessageBox.Show("Не удалось получить токен", "Ошибка");
+                MessageBox.Show("Не удалось зарегистрироваться", "Регистрация");
             }
+            database.closeConnection();
         }
     }
 }

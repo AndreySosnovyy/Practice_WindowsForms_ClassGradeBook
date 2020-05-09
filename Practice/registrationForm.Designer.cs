@@ -1,6 +1,6 @@
 ﻿namespace Practice
 {
-    partial class RegistrationForm
+    partial class registrationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrationForm));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.tokenFromFile = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.passwordField2 = new System.Windows.Forms.TextBox();
             this.passwordField = new System.Windows.Forms.TextBox();
@@ -71,7 +69,6 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.panel2.Controls.Add(this.tokenFromFile);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.passwordField2);
             this.panel2.Controls.Add(this.passwordField);
@@ -85,27 +82,14 @@
             this.panel2.Size = new System.Drawing.Size(372, 603);
             this.panel2.TabIndex = 3;
             // 
-            // tokenFromFile
-            // 
-            this.tokenFromFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(182)))), ((int)(((byte)(182)))));
-            this.tokenFromFile.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tokenFromFile.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.tokenFromFile.Location = new System.Drawing.Point(43, 472);
-            this.tokenFromFile.Name = "tokenFromFile";
-            this.tokenFromFile.Size = new System.Drawing.Size(277, 41);
-            this.tokenFromFile.TabIndex = 7;
-            this.tokenFromFile.Text = "Получить токен из файла";
-            this.tokenFromFile.UseVisualStyleBackColor = false;
-            this.tokenFromFile.Click += new System.EventHandler(this.tokenFromFile_Click);
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label10.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Font = new System.Drawing.Font("Bahnschrift Condensed", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label10.Location = new System.Drawing.Point(12, 21);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(81, 29);
+            this.label10.Size = new System.Drawing.Size(62, 29);
             this.label10.TabIndex = 6;
             this.label10.Text = "Назад";
             this.label10.Click += new System.EventHandler(this.label10_Click);
@@ -116,9 +100,9 @@
             // 
             this.passwordField2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.passwordField2.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordField2.Location = new System.Drawing.Point(78, 404);
+            this.passwordField2.Location = new System.Drawing.Point(92, 431);
             this.passwordField2.Name = "passwordField2";
-            this.passwordField2.Size = new System.Drawing.Size(194, 32);
+            this.passwordField2.Size = new System.Drawing.Size(180, 32);
             this.passwordField2.TabIndex = 5;
             this.passwordField2.Enter += new System.EventHandler(this.passwordField2_Enter);
             this.passwordField2.Leave += new System.EventHandler(this.passwordField2_Leave);
@@ -127,9 +111,9 @@
             // 
             this.passwordField.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.passwordField.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordField.Location = new System.Drawing.Point(78, 332);
+            this.passwordField.Location = new System.Drawing.Point(92, 359);
             this.passwordField.Name = "passwordField";
-            this.passwordField.Size = new System.Drawing.Size(194, 35);
+            this.passwordField.Size = new System.Drawing.Size(180, 35);
             this.passwordField.TabIndex = 4;
             this.passwordField.Enter += new System.EventHandler(this.passwordField_Enter);
             this.passwordField.Leave += new System.EventHandler(this.passwordField_Leave);
@@ -137,11 +121,11 @@
             // enterButton
             // 
             this.enterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(182)))), ((int)(((byte)(182)))));
-            this.enterButton.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.enterButton.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.enterButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.enterButton.Location = new System.Drawing.Point(220, 539);
+            this.enterButton.Location = new System.Drawing.Point(132, 500);
             this.enterButton.Name = "enterButton";
-            this.enterButton.Size = new System.Drawing.Size(100, 38);
+            this.enterButton.Size = new System.Drawing.Size(100, 34);
             this.enterButton.TabIndex = 3;
             this.enterButton.Text = "Далее";
             this.enterButton.UseVisualStyleBackColor = false;
@@ -151,7 +135,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Bahnschrift Condensed", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(68, 77);
+            this.label2.Location = new System.Drawing.Point(68, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(235, 60);
             this.label2.TabIndex = 2;
@@ -161,9 +145,9 @@
             // 
             this.loginField.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.loginField.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loginField.Location = new System.Drawing.Point(78, 258);
+            this.loginField.Location = new System.Drawing.Point(92, 285);
             this.loginField.Name = "loginField";
-            this.loginField.Size = new System.Drawing.Size(194, 35);
+            this.loginField.Size = new System.Drawing.Size(180, 35);
             this.loginField.TabIndex = 1;
             this.loginField.Enter += new System.EventHandler(this.loginField_Enter);
             this.loginField.Leave += new System.EventHandler(this.loginField_Leave);
@@ -172,9 +156,9 @@
             // 
             this.tokenField.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.tokenField.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tokenField.Location = new System.Drawing.Point(78, 188);
+            this.tokenField.Location = new System.Drawing.Point(92, 215);
             this.tokenField.Name = "tokenField";
-            this.tokenField.Size = new System.Drawing.Size(194, 35);
+            this.tokenField.Size = new System.Drawing.Size(180, 35);
             this.tokenField.TabIndex = 0;
             this.tokenField.Enter += new System.EventHandler(this.tokenField_Enter);
             this.tokenField.Leave += new System.EventHandler(this.tokenField_Leave);
@@ -252,11 +236,11 @@
             // regStudentButton
             // 
             this.regStudentButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(182)))), ((int)(((byte)(182)))));
-            this.regStudentButton.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.regStudentButton.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.regStudentButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.regStudentButton.Location = new System.Drawing.Point(470, 429);
+            this.regStudentButton.Location = new System.Drawing.Point(470, 433);
             this.regStudentButton.Name = "regStudentButton";
-            this.regStudentButton.Size = new System.Drawing.Size(233, 46);
+            this.regStudentButton.Size = new System.Drawing.Size(185, 42);
             this.regStudentButton.TabIndex = 107;
             this.regStudentButton.Text = "Зарегистрироваться";
             this.regStudentButton.UseVisualStyleBackColor = false;
@@ -265,11 +249,11 @@
             // regTeacherButton
             // 
             this.regTeacherButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(182)))), ((int)(((byte)(182)))));
-            this.regTeacherButton.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.regTeacherButton.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.regTeacherButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.regTeacherButton.Location = new System.Drawing.Point(470, 481);
             this.regTeacherButton.Name = "regTeacherButton";
-            this.regTeacherButton.Size = new System.Drawing.Size(233, 46);
+            this.regTeacherButton.Size = new System.Drawing.Size(185, 42);
             this.regTeacherButton.TabIndex = 6;
             this.regTeacherButton.Text = "Зарегистрироваться";
             this.regTeacherButton.UseVisualStyleBackColor = false;
@@ -335,16 +319,16 @@
             // classField
             // 
             this.classField.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.classField.Location = new System.Drawing.Point(211, 440);
+            this.classField.Location = new System.Drawing.Point(211, 436);
             this.classField.Name = "classField";
-            this.classField.Size = new System.Drawing.Size(83, 35);
+            this.classField.Size = new System.Drawing.Size(143, 35);
             this.classField.TabIndex = 105;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(118, 445);
+            this.label9.Location = new System.Drawing.Point(118, 441);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 24);
             this.label9.TabIndex = 104;
@@ -353,7 +337,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Bahnschrift Light", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Font = new System.Drawing.Font("Bahnschrift SemiLight", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.Location = new System.Drawing.Point(203, 56);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(338, 48);
@@ -375,7 +359,7 @@
             this.secondNameField.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.secondNameField.Location = new System.Drawing.Point(211, 150);
             this.secondNameField.Name = "secondNameField";
-            this.secondNameField.Size = new System.Drawing.Size(171, 35);
+            this.secondNameField.Size = new System.Drawing.Size(143, 35);
             this.secondNameField.TabIndex = 94;
             // 
             // phoneField
@@ -383,7 +367,7 @@
             this.phoneField.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.phoneField.Location = new System.Drawing.Point(211, 362);
             this.phoneField.Name = "phoneField";
-            this.phoneField.Size = new System.Drawing.Size(171, 35);
+            this.phoneField.Size = new System.Drawing.Size(143, 35);
             this.phoneField.TabIndex = 101;
             // 
             // label4
@@ -411,7 +395,7 @@
             this.nameField.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nameField.Location = new System.Drawing.Point(211, 216);
             this.nameField.Name = "nameField";
-            this.nameField.Size = new System.Drawing.Size(171, 35);
+            this.nameField.Size = new System.Drawing.Size(143, 35);
             this.nameField.TabIndex = 96;
             // 
             // label5
@@ -429,10 +413,10 @@
             this.thirdNameField.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.thirdNameField.Location = new System.Drawing.Point(211, 282);
             this.thirdNameField.Name = "thirdNameField";
-            this.thirdNameField.Size = new System.Drawing.Size(171, 35);
+            this.thirdNameField.Size = new System.Drawing.Size(143, 35);
             this.thirdNameField.TabIndex = 98;
             // 
-            // RegistrationForm
+            // registrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -442,9 +426,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "RegistrationForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Name = "registrationForm";
             this.Text = "registrationForm";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -492,6 +474,5 @@
         private System.Windows.Forms.Button regTeacherButton;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button regStudentButton;
-        private System.Windows.Forms.Button tokenFromFile;
     }
 }

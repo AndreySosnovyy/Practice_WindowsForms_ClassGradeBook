@@ -58,7 +58,6 @@
             this.showButton = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.subjectComboBox = new System.Windows.Forms.ComboBox();
-            this.csvButton = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -266,7 +265,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(244, 48);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Объявление";
+            this.label2.Text = "Объявления";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel1
@@ -324,19 +323,19 @@
             this.table.ColumnCount = 2;
             this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.table.Location = new System.Drawing.Point(378, 137);
+            this.table.Location = new System.Drawing.Point(378, 123);
             this.table.Name = "table";
             this.table.RowCount = 2;
             this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.table.Size = new System.Drawing.Size(733, 486);
+            this.table.Size = new System.Drawing.Size(733, 512);
             this.table.TabIndex = 7;
             // 
             // classComboBox
             // 
             this.classComboBox.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.classComboBox.FormattingEnabled = true;
-            this.classComboBox.Location = new System.Drawing.Point(408, 72);
+            this.classComboBox.Location = new System.Drawing.Point(405, 85);
             this.classComboBox.Name = "classComboBox";
             this.classComboBox.Size = new System.Drawing.Size(95, 32);
             this.classComboBox.TabIndex = 9;
@@ -345,7 +344,7 @@
             // 
             this.monthComboBox.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.monthComboBox.FormattingEnabled = true;
-            this.monthComboBox.Location = new System.Drawing.Point(779, 72);
+            this.monthComboBox.Location = new System.Drawing.Point(779, 85);
             this.monthComboBox.Name = "monthComboBox";
             this.monthComboBox.Size = new System.Drawing.Size(152, 32);
             this.monthComboBox.TabIndex = 10;
@@ -354,7 +353,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(415, 40);
+            this.label6.Location = new System.Drawing.Point(412, 53);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 29);
             this.label6.TabIndex = 11;
@@ -364,7 +363,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(811, 40);
+            this.label7.Location = new System.Drawing.Point(811, 53);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(85, 29);
             this.label7.TabIndex = 12;
@@ -373,9 +372,9 @@
             // showButton
             // 
             this.showButton.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.showButton.Location = new System.Drawing.Point(967, 72);
+            this.showButton.Location = new System.Drawing.Point(967, 57);
             this.showButton.Name = "showButton";
-            this.showButton.Size = new System.Drawing.Size(144, 52);
+            this.showButton.Size = new System.Drawing.Size(144, 39);
             this.showButton.TabIndex = 13;
             this.showButton.Text = "Показать";
             this.showButton.UseVisualStyleBackColor = true;
@@ -385,7 +384,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(581, 40);
+            this.label8.Location = new System.Drawing.Point(581, 53);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(108, 29);
             this.label8.TabIndex = 15;
@@ -395,22 +394,10 @@
             // 
             this.subjectComboBox.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.subjectComboBox.FormattingEnabled = true;
-            this.subjectComboBox.Location = new System.Drawing.Point(541, 72);
+            this.subjectComboBox.Location = new System.Drawing.Point(541, 85);
             this.subjectComboBox.Name = "subjectComboBox";
             this.subjectComboBox.Size = new System.Drawing.Size(200, 32);
             this.subjectComboBox.TabIndex = 14;
-            // 
-            // csvButton
-            // 
-            this.csvButton.AutoSize = true;
-            this.csvButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.csvButton.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.csvButton.Location = new System.Drawing.Point(1010, 35);
-            this.csvButton.Name = "csvButton";
-            this.csvButton.Size = new System.Drawing.Size(57, 29);
-            this.csvButton.TabIndex = 16;
-            this.csvButton.Text = "CSV";
-            this.csvButton.Click += new System.EventHandler(this.csvButton_Click);
             // 
             // BookForm
             // 
@@ -418,7 +405,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(1123, 635);
-            this.Controls.Add(this.csvButton);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.subjectComboBox);
             this.Controls.Add(this.showButton);
@@ -430,9 +416,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BookForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "BookForm";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -490,6 +474,5 @@
         private System.Windows.Forms.Button showButton;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox subjectComboBox;
-        private System.Windows.Forms.Label csvButton;
     }
 }

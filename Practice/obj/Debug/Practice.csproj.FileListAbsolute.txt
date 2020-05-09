@@ -23,6 +23,3 @@ C:\projects\Practice\Practice\obj\Debug\Practice.EditForm.resources
 C:\projects\Practice\Practice\obj\Debug\Practice.MarkForm.resources
 C:\projects\Practice\Practice\obj\Debug\Practice.EditAdsForm.resources
 C:\projects\Practice\Practice\obj\Debug\Practice.CreateTokenForm.resources
-C:\projects\Practice\Practice\obj\Debug\Practice.AddTimetableForm.resources
-C:\projects\Practice\Practice\obj\Debug\Practice.DelUserForm.resources
-C:\projects\Practice\Practice\obj\Debug\Practice.EditMarkForm.resources

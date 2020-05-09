@@ -31,7 +31,6 @@ namespace Practice
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonExit = new System.Windows.Forms.Button();
@@ -42,11 +41,9 @@ namespace Practice
             this.label2 = new System.Windows.Forms.Label();
             this.passwordField = new System.Windows.Forms.TextBox();
             this.loginField = new System.Windows.Forms.TextBox();
-            this.imageFromDB = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageFromDB)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -119,10 +116,10 @@ namespace Practice
             // 
             this.label3.AutoSize = true;
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(49, 528);
+            this.label3.Font = new System.Drawing.Font("Bahnschrift Condensed", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(87, 528);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(269, 29);
+            this.label3.Size = new System.Drawing.Size(195, 29);
             this.label3.TabIndex = 3;
             this.label3.Text = "Регистрация по токену";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -132,11 +129,11 @@ namespace Practice
             // enterButton
             // 
             this.enterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(182)))), ((int)(((byte)(182)))));
-            this.enterButton.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.enterButton.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.enterButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.enterButton.Location = new System.Drawing.Point(123, 360);
+            this.enterButton.Location = new System.Drawing.Point(134, 372);
             this.enterButton.Name = "enterButton";
-            this.enterButton.Size = new System.Drawing.Size(107, 36);
+            this.enterButton.Size = new System.Drawing.Size(100, 34);
             this.enterButton.TabIndex = 3;
             this.enterButton.Text = "Войти";
             this.enterButton.UseVisualStyleBackColor = false;
@@ -177,28 +174,16 @@ namespace Practice
             this.loginField.Enter += new System.EventHandler(this.loginField_Enter);
             this.loginField.Leave += new System.EventHandler(this.loginField_Leave);
             // 
-            // imageFromDB
-            // 
-            this.imageFromDB.Location = new System.Drawing.Point(369, 32);
-            this.imageFromDB.Name = "imageFromDB";
-            this.imageFromDB.Size = new System.Drawing.Size(754, 603);
-            this.imageFromDB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imageFromDB.TabIndex = 2;
-            this.imageFromDB.TabStop = false;
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(1123, 635);
-            this.Controls.Add(this.imageFromDB);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LoginForm";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.panel1.ResumeLayout(false);
@@ -206,7 +191,6 @@ namespace Practice
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageFromDB)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -263,6 +247,5 @@ namespace Practice
         private System.Windows.Forms.TextBox loginField;
         private System.Windows.Forms.Button enterButton;
         private Label label3;
-        private PictureBox imageFromDB;
     }
 }

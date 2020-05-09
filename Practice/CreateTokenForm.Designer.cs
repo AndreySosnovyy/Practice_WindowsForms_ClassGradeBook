@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateTokenForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonExit = new System.Windows.Forms.Button();
@@ -41,12 +40,8 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.copyButton = new System.Windows.Forms.Button();
             this.infoButton = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tokenInFileButton = new System.Windows.Forms.Button();
-            this.secretCheckBox = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -101,7 +96,7 @@
             // tokenField
             // 
             this.tokenField.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tokenField.Location = new System.Drawing.Point(226, 287);
+            this.tokenField.Location = new System.Drawing.Point(27, 294);
             this.tokenField.Name = "tokenField";
             this.tokenField.Size = new System.Drawing.Size(168, 35);
             this.tokenField.TabIndex = 12;
@@ -109,9 +104,9 @@
             // generateButton
             // 
             this.generateButton.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.generateButton.Location = new System.Drawing.Point(36, 287);
+            this.generateButton.Location = new System.Drawing.Point(220, 294);
             this.generateButton.Name = "generateButton";
-            this.generateButton.Size = new System.Drawing.Size(184, 35);
+            this.generateButton.Size = new System.Drawing.Size(184, 37);
             this.generateButton.TabIndex = 13;
             this.generateButton.Text = "Сгенерировать";
             this.generateButton.UseVisualStyleBackColor = true;
@@ -166,9 +161,9 @@
             // copyButton
             // 
             this.copyButton.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.copyButton.Location = new System.Drawing.Point(127, 338);
+            this.copyButton.Location = new System.Drawing.Point(93, 356);
             this.copyButton.Name = "copyButton";
-            this.copyButton.Size = new System.Drawing.Size(184, 37);
+            this.copyButton.Size = new System.Drawing.Size(219, 37);
             this.copyButton.TabIndex = 21;
             this.copyButton.Text = "Копировать токен";
             this.copyButton.UseVisualStyleBackColor = true;
@@ -179,51 +174,18 @@
             this.infoButton.AutoSize = true;
             this.infoButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.infoButton.Font = new System.Drawing.Font("Bahnschrift SemiLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.infoButton.Location = new System.Drawing.Point(79, 528);
+            this.infoButton.Location = new System.Drawing.Point(74, 420);
             this.infoButton.Name = "infoButton";
-            this.infoButton.Size = new System.Drawing.Size(267, 24);
+            this.infoButton.Size = new System.Drawing.Size(258, 24);
             this.infoButton.TabIndex = 22;
-            this.infoButton.Text = "*ИНФОРМАЦИЯ О ТОКЕНАХ";
+            this.infoButton.Text = "ИНФОРМАЦИЯ О ТОКЕНАХ";
             this.infoButton.Click += new System.EventHandler(this.infoButton_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.secretCheckBox);
-            this.groupBox1.Controls.Add(this.tokenInFileButton);
-            this.groupBox1.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(40, 404);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(345, 99);
-            this.groupBox1.TabIndex = 23;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Или создать файл с токеном";
-            // 
-            // tokenInFileButton
-            // 
-            this.tokenInFileButton.Location = new System.Drawing.Point(14, 40);
-            this.tokenInFileButton.Name = "tokenInFileButton";
-            this.tokenInFileButton.Size = new System.Drawing.Size(166, 40);
-            this.tokenInFileButton.TabIndex = 0;
-            this.tokenInFileButton.Text = "Создать";
-            this.tokenInFileButton.UseVisualStyleBackColor = true;
-            this.tokenInFileButton.Click += new System.EventHandler(this.tokenInFileButton_Click);
-            // 
-            // secretCheckBox
-            // 
-            this.secretCheckBox.AutoSize = true;
-            this.secretCheckBox.Location = new System.Drawing.Point(186, 47);
-            this.secretCheckBox.Name = "secretCheckBox";
-            this.secretCheckBox.Size = new System.Drawing.Size(140, 28);
-            this.secretCheckBox.TabIndex = 1;
-            this.secretCheckBox.Text = "Шифровать";
-            this.secretCheckBox.UseVisualStyleBackColor = true;
             // 
             // CreateTokenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 576);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(425, 467);
             this.Controls.Add(this.infoButton);
             this.Controls.Add(this.copyButton);
             this.Controls.Add(this.radioButton3);
@@ -234,14 +196,11 @@
             this.Controls.Add(this.tokenField);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateTokenForm";
             this.Text = "CreateTokenForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,8 +220,5 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Button copyButton;
         private System.Windows.Forms.Label infoButton;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox secretCheckBox;
-        private System.Windows.Forms.Button tokenInFileButton;
     }
 }
