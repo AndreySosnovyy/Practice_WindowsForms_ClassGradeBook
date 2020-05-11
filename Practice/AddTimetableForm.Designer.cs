@@ -32,6 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -77,7 +78,6 @@
             this.saturday3 = new System.Windows.Forms.TextBox();
             this.saturday2 = new System.Windows.Forms.TextBox();
             this.saturday1 = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -99,10 +99,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(50, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 24);
+            this.label1.Size = new System.Drawing.Size(277, 24);
             this.label1.TabIndex = 4;
             this.label1.Text = "ДОБАВЛЕНИЕ РАСПИСАНИЯ";
             // 
@@ -120,6 +120,16 @@
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             this.buttonExit.MouseEnter += new System.EventHandler(this.buttonExit_MouseEnter);
             this.buttonExit.MouseLeave += new System.EventHandler(this.buttonExit_MouseLeave);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Practice.Properties.Resources.mainPen;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // label2
             // 
@@ -498,16 +508,6 @@
             this.saturday1.Name = "saturday1";
             this.saturday1.Size = new System.Drawing.Size(136, 32);
             this.saturday1.TabIndex = 56;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Practice.Properties.Resources.mainPen;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
             // 
             // AddTimetableForm
             // 

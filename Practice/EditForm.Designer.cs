@@ -89,10 +89,10 @@
             // 
             this.exitButton.AutoSize = true;
             this.exitButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exitButton.Font = new System.Drawing.Font("Bahnschrift Condensed", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.exitButton.Location = new System.Drawing.Point(103, 548);
+            this.exitButton.Font = new System.Drawing.Font("Bahnschrift Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.exitButton.Location = new System.Drawing.Point(71, 548);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(165, 29);
+            this.exitButton.Size = new System.Drawing.Size(221, 29);
             this.exitButton.TabIndex = 4;
             this.exitButton.Text = "Выйти из аккаунта";
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
@@ -284,10 +284,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(50, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 24);
+            this.label1.Size = new System.Drawing.Size(215, 24);
             this.label1.TabIndex = 4;
             this.label1.Text = "ШКОЛЬНЫЙ ЖУРНАЛ";
             // 

@@ -481,13 +481,60 @@ namespace Practice
                     }
                     else
                     {
-                        index++;
+                        while (names[index] != reader3.GetValue(0).ToString())
+                        {
+                            index++;
+                        }
                         marks[index, Int32.Parse(reader3.GetValue(1).ToString()) - 1] = reader3.GetValue(2).ToString();
                     }
                 }
 
                 reader3.Close();
                 database.closeConnection();
+
+
+                //StringBuilder sb = new StringBuilder();
+                //for (int i = 0; i < rows - 1; i++)
+                //{
+                //    for (int j = 0; j < columns - 1; j++)
+                //    {
+                //        sb.Append(marks[i, j] + "\t");
+                //    }
+                //    sb.Append("\n");
+                //}
+                //MessageBox.Show(sb.ToString());
+
+
+
+                //for (int i = 0; i < rows; i++)
+                //{
+                //    for (int j = 0; j < columns; j++)
+                //    {
+                //        if (i == 0 && j == 0)
+                //        {
+                //            continue;
+                //        }
+
+                //        if (i == 0 && j > 0)
+                //        {
+                //            sb.Append(j.ToString() + "\t");
+                //        }
+
+                //        if (i > 0 && j == 0)
+                //        {
+                //            sb.Append(names[i - 1] + "\t");
+                //        }
+
+                //        if (i > 0 && j > 0)
+                //        {
+                //            sb.Append(marks[i - 1, j - 1] + "\t");
+                //        }
+                //    }
+                //    sb.Append("\n");
+                //}
+                //MessageBox.Show(sb.ToString());
+
+
 
                 TableLayoutRowStyleCollection styles = table.RowStyles;
                 foreach (RowStyle style in styles)

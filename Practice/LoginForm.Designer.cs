@@ -67,10 +67,10 @@ namespace Practice
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(50, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 24);
+            this.label1.Size = new System.Drawing.Size(215, 24);
             this.label1.TabIndex = 4;
             this.label1.Text = "ШКОЛЬНЫЙ ЖУРНАЛ";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -145,10 +145,10 @@ namespace Practice
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Bahnschrift Condensed", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(68, 103);
+            this.label2.Font = new System.Drawing.Font("Bahnschrift Light", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(25, 101);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(235, 60);
+            this.label2.Size = new System.Drawing.Size(326, 60);
             this.label2.TabIndex = 2;
             this.label2.Text = "Авторизация";
             this.label2.Click += new System.EventHandler(this.label2_Click);

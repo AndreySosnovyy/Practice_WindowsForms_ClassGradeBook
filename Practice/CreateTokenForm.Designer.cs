@@ -42,8 +42,8 @@
             this.copyButton = new System.Windows.Forms.Button();
             this.infoButton = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tokenInFileButton = new System.Windows.Forms.Button();
             this.secretCheckBox = new System.Windows.Forms.CheckBox();
+            this.tokenInFileButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -66,10 +66,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift Condensed", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(50, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 24);
+            this.label1.Size = new System.Drawing.Size(196, 24);
             this.label1.TabIndex = 4;
             this.label1.Text = "СОЗДАНИЕ ТОКЕНА";
             // 
@@ -198,16 +198,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Или создать файл с токеном";
             // 
-            // tokenInFileButton
-            // 
-            this.tokenInFileButton.Location = new System.Drawing.Point(14, 40);
-            this.tokenInFileButton.Name = "tokenInFileButton";
-            this.tokenInFileButton.Size = new System.Drawing.Size(166, 40);
-            this.tokenInFileButton.TabIndex = 0;
-            this.tokenInFileButton.Text = "Создать";
-            this.tokenInFileButton.UseVisualStyleBackColor = true;
-            this.tokenInFileButton.Click += new System.EventHandler(this.tokenInFileButton_Click);
-            // 
             // secretCheckBox
             // 
             this.secretCheckBox.AutoSize = true;
@@ -217,6 +207,16 @@
             this.secretCheckBox.TabIndex = 1;
             this.secretCheckBox.Text = "Шифровать";
             this.secretCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // tokenInFileButton
+            // 
+            this.tokenInFileButton.Location = new System.Drawing.Point(14, 40);
+            this.tokenInFileButton.Name = "tokenInFileButton";
+            this.tokenInFileButton.Size = new System.Drawing.Size(166, 40);
+            this.tokenInFileButton.TabIndex = 0;
+            this.tokenInFileButton.Text = "Создать";
+            this.tokenInFileButton.UseVisualStyleBackColor = true;
+            this.tokenInFileButton.Click += new System.EventHandler(this.tokenInFileButton_Click);
             // 
             // CreateTokenForm
             // 
