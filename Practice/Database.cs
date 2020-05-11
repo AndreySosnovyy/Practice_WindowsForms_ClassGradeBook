@@ -9,8 +9,8 @@ namespace Practice
 {
     class Database
     {
-        MySqlConnection connection = new 
-            MySqlConnection("server=localhost;port=3306;username=root;password=;database=practice");
+        MySqlConnection connection = new MySqlConnection
+            ("server=localhost;port=3306;username=root;password=;database=practice");
 
         public void openConnection()
         {

@@ -26,6 +26,9 @@ namespace Practice
             this.passwordField.ForeColor = Color.FromArgb(188, 188, 188);
             this.label3.ForeColor = Color.FromArgb(164, 164, 164);
 
+            Singleton singleton = Singleton.GetInstance();
+            singleton.DeleteTable("example");
+
             Database database = new Database();
             String randId = "";
             MySqlCommand commandGetId = new MySqlCommand

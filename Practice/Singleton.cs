@@ -22,7 +22,7 @@ namespace Practice
         {
             Database database = new Database();
             MySqlCommand command = new MySqlCommand
-                    ("CREATE TABLE example " +
+                    ("CREATE TABLE IF NOT EXISTS example " +
                     "(`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT , PRIMARY KEY (`id`))" +
                     " ENGINE = InnoDB;", database.getConnection());
             //command.Parameters.AddWithValue("@tableName", tableName);
@@ -35,7 +35,7 @@ namespace Practice
         {
             Database database = new Database();
             MySqlCommand command = new MySqlCommand
-                    ("DROP TABLE example", database.getConnection());
+                    ("DROP TABLE IF EXISTS example", database.getConnection());
             //command.Parameters.AddWithValue("@tableName", tableName);
             database.openConnection();
             command.ExecuteNonQuery();
