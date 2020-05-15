@@ -38,7 +38,7 @@ namespace Practice
             for (int i = 0; i < 11; i++)
             {
                 classComboBox.Items.Add("" + (i + 1));
-            }            
+            }
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
@@ -338,7 +338,7 @@ namespace Practice
 
         private void setMarkButton_Click(object sender, EventArgs e)
         {
-            String teachersName = ""; 
+            String teachersName = "";
             String subject = "";
             String date = dateTimePicker.Value.ToString();
             date = "" + date[6] + date[7] + date[8] + date[9] + "-" + date[3] + date[4] + "-" + date[0] + date[1];
@@ -393,13 +393,21 @@ namespace Practice
                 commandAdd.Parameters.AddWithValue("@subject", subject);
                 commandAdd.Parameters.AddWithValue("@teachersName", teachersName);
                 database.openConnection();
-                commandAdd.ExecuteNonQuery();
+                if (commandAdd.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("Оценка выставылена", "Уведомление");
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось выставить оценку", "Ошибка");
+                }
                 database.closeConnection();
                 reader.Close();
-                MessageBox.Show("Оценка выставылена", "Уведомление");
                 valueField.Text = "";
             }
         }
+    
+
 
         private void pictureBox6_Click(object sender, EventArgs e)
         {

@@ -152,86 +152,93 @@ namespace Practice
 
         private void continueButton_Click(object sender, EventArgs e)
         {
-            String enteredToken = this.tokenField.Text;
-            String enteredLogin = this.loginField.Text;
-            String enteredPassword = this.passwordField.Text;
-            String enteredPassword2 = this.passwordField2.Text;
-
-            if (enteredToken.Length == 0 || tokenField.Text == " Токен")
+            if (isExists(loginField.Text))
             {
-                MessageBox.Show("Введите токен!", "Ошибка");
-            }
-            else if (enteredLogin.Length == 0 || loginField.Text == " Логин")
-            {
-                MessageBox.Show("Введите логин!", "Ошибка");
-            }
-            else if (enteredPassword.Length == 0 || passwordField.Text == " Пароль")
-            {
-                MessageBox.Show("Введите пароль!", "Ошибка");
-            }
-            else if (enteredPassword2.Length == 0 || passwordField2.Text == " Пароль еще раз")
-            {
-                MessageBox.Show("Подтверите пароль!", "Ошибка");
-            }
-            else if (enteredPassword != enteredPassword2)
-            {
-                MessageBox.Show("Пароли не совпадают!", "Ошибка");
+                MessageBox.Show("Такой логин уже занят", "Ошибка");
             }
             else
             {
-                loginField.Hide();
-                passwordField.Hide();
-                passwordField2.Hide();
-                tokenField.Hide();
-                enterButton.Hide();
-                tokenFromFile.Hide();
+                String enteredToken = this.tokenField.Text;
+                String enteredLogin = this.loginField.Text;
+                String enteredPassword = this.passwordField.Text;
+                String enteredPassword2 = this.passwordField2.Text;
 
-                Database database = new Database();
-                MySqlCommand command = new MySqlCommand
-                    ("SELECT `type` FROM `tokens` WHERE `token` = @t", database.getConnection());
-                command.Parameters.AddWithValue("@t", enteredToken);
-                database.openConnection();
-                MySqlDataReader reader = command.ExecuteReader();
-
-                bool flag = false;
-
-                if (!reader.Read())
+                if (enteredToken.Length == 0 || tokenField.Text == " Токен")
                 {
-                    MessageBox.Show("Введенного Вами токена не существует!", "Ошибка");
+                    MessageBox.Show("Введите токен!", "Ошибка");
                 }
-                else if (reader.GetValue(0).ToString() == "1" || reader.GetValue(0).ToString() == "2")
+                else if (enteredLogin.Length == 0 || loginField.Text == " Логин")
                 {
-                    this.dataPanel.Visible = true;
-                    this.classField.Visible = false;
-                    this.label9.Visible = false;
-                    this.groupBox.Visible = true;
-                    this.regStudentButton.Visible = false;
-                    this.regTeacherButton.Visible = true;
-                    GlobalRole = reader.GetValue(0).ToString();
-                    flag = true;
+                    MessageBox.Show("Введите логин!", "Ошибка");
                 }
-                else if (reader.GetValue(0).ToString() == "0")
+                else if (enteredPassword.Length == 0 || passwordField.Text == " Пароль")
                 {
-                    this.dataPanel.Visible = true;
-                    this.groupBox.Visible = false;
-                    this.classField.Visible = true;
-                    this.label9.Visible = true;
-                    this.regStudentButton.Visible = true;
-                    this.regTeacherButton.Visible = false;
-                    GlobalRole = "0";
-                    flag = true;
+                    MessageBox.Show("Введите пароль!", "Ошибка");
                 }
-                reader.Close();
-                database.closeConnection();
+                else if (enteredPassword2.Length == 0 || passwordField2.Text == " Пароль еще раз")
+                {
+                    MessageBox.Show("Подтверите пароль!", "Ошибка");
+                }
+                else if (enteredPassword != enteredPassword2)
+                {
+                    MessageBox.Show("Пароли не совпадают!", "Ошибка");
+                }
+                else
+                {
+                    loginField.Hide();
+                    passwordField.Hide();
+                    passwordField2.Hide();
+                    tokenField.Hide();
+                    enterButton.Hide();
+                    tokenFromFile.Hide();
 
-                if (flag)
-                {
-                    MySqlCommand commandDel = new MySqlCommand
-                        ("DELETE FROM `tokens` WHERE `token` = @t", database.getConnection());
-                    commandDel.Parameters.AddWithValue("@t", enteredToken);
+                    Database database = new Database();
+                    MySqlCommand command = new MySqlCommand
+                        ("SELECT `type` FROM `tokens` WHERE `token` = @t", database.getConnection());
+                    command.Parameters.AddWithValue("@t", enteredToken);
                     database.openConnection();
-                    commandDel.ExecuteNonQuery();
+                    MySqlDataReader reader = command.ExecuteReader();
+
+                    bool flag = false;
+
+                    if (!reader.Read())
+                    {
+                        MessageBox.Show("Введенного Вами токена не существует!", "Ошибка");
+                    }
+                    else if (reader.GetValue(0).ToString() == "1" || reader.GetValue(0).ToString() == "2")
+                    {
+                        this.dataPanel.Visible = true;
+                        this.classField.Visible = false;
+                        this.label9.Visible = false;
+                        this.groupBox.Visible = true;
+                        this.regStudentButton.Visible = false;
+                        this.regTeacherButton.Visible = true;
+                        GlobalRole = reader.GetValue(0).ToString();
+                        flag = true;
+                    }
+                    else if (reader.GetValue(0).ToString() == "0")
+                    {
+                        this.dataPanel.Visible = true;
+                        this.groupBox.Visible = false;
+                        this.classField.Visible = true;
+                        this.label9.Visible = true;
+                        this.regStudentButton.Visible = true;
+                        this.regTeacherButton.Visible = false;
+                        GlobalRole = "0";
+                        flag = true;
+                    }
+                    reader.Close();
                     database.closeConnection();
+
+                    if (flag)
+                    {
+                        MySqlCommand commandDel = new MySqlCommand
+                            ("DELETE FROM `tokens` WHERE `token` = @t", database.getConnection());
+                        commandDel.Parameters.AddWithValue("@t", enteredToken);
+                        database.openConnection();
+                        commandDel.ExecuteNonQuery();
+                        database.closeConnection();
+                    }
                 }
             }
         }
@@ -302,6 +309,7 @@ namespace Practice
             }
             else
             {
+
                 Database database = new Database();
                 database.openConnection();
                 MySqlCommand commandAddTeacher = new MySqlCommand
@@ -412,7 +420,7 @@ namespace Practice
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Получить токен из файла";
-            ofd.Filter = "txt files(*.txt)| *.txt | All files(*.*) | *.* ";
+            //ofd.Filter = "txt files(*.txt)| *.txt | All files(*.*) | *.* ";
             String tokenFromFile = "";
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -429,11 +437,44 @@ namespace Practice
                         tokenField.Text = tokenField.Text + readyToken[i].ToString();
                     }
                 }
+                else
+                {
+                    tokenField.Text = tokenFromFile;
+                }
             }
             else
             {
                 MessageBox.Show("Не удалось получить токен", "Ошибка");
             }
+        }
+
+        public bool isExists(String login)
+        {
+            Database database = new Database();
+            MySqlCommand command = new MySqlCommand
+                ("SELECT `id` FROM `teachers` WHERE `login` = @login", database.getConnection());
+            command.Parameters.AddWithValue("@login", login);
+            database.openConnection();
+            MySqlDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                return true;
+            }
+            reader.Close();
+
+            MySqlCommand command1 = new MySqlCommand
+                ("SELECT `id` FROM `student` WHERE `login` = @login", database.getConnection());
+            command1.Parameters.AddWithValue("@login", login);
+            database.openConnection();
+            MySqlDataReader reader1 = command1.ExecuteReader();
+
+            if (reader1.Read())
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
